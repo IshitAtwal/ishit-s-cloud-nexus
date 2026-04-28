@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Download, FolderGit2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalBackground } from "./TerminalBackground";
-import { FloatingClouds } from "./FloatingClouds";
+import { TerminalBackground } from "../TerminalBackground";
+import { FloatingClouds } from "../FloatingClouds";
 
 export const Hero = () => {
   return (
