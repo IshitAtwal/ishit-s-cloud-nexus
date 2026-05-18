@@ -4,7 +4,7 @@ import { SectionHeading } from "../SectionHeading";
 
 const experiences = [
   {
-    role: "Junior Cloud Computing Intern",
+    role: "DevOps Engineer",
     company: "Techcadd",
     period: "Jan 2026 — Present",
     points: [
