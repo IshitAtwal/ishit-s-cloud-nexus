@@ -13,7 +13,7 @@ const groups = [
   { icon: Database,    title: "Databases",   items: ["MySQL", "PostgreSQL", "MongoDB"] },
   { icon: Network,     title: "Networking",  items: ["VPC", "Route 53"] },
   { icon: ShieldCheck, title: "Security",    items: ["IAM", "WAF", "Vault"] },
-  { icon: GitBranch,   title: "Version Ctrl", items: ["Git", "GitHub"] },
+  { icon: GitBranch,   title: "Version Control", items: ["Git", "GitHub"] },
 ];
 
 export const Skills = () => (
@@ -22,6 +22,7 @@ export const Skills = () => (
       <SectionHeading
         eyebrow="03 — Skills"
         title="The stack that powers reliable systems."
+        subtitle="A compact view of the tools I use to ship, observe, and stabilize cloud infrastructure."
       />
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -33,21 +34,21 @@ export const Skills = () => (
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: i * 0.05 }}
             whileHover={{ y: -4 }}
-            className="group relative glass rounded-2xl p-5 shadow-glass overflow-hidden hover:shadow-glow transition-all"
+            className="group relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/5 p-5 shadow-glass hover:border-sky-400/25 hover:shadow-[0_20px_60px_-28px_rgba(59,130,246,0.45)] transition-all"
           >
             {/* glow */}
             <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-brand-sky/0 group-hover:bg-brand-sky/15 blur-2xl transition-all duration-500" />
 
             <div className="relative">
-              <div className="h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white mb-3">
+              <div className="h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white mb-3 shadow-accent-glow">
                 <g.icon className="h-5 w-5" />
               </div>
-              <div className="font-semibold mb-2">{g.title}</div>
+              <div className="font-semibold mb-2 tracking-tight text-foreground">{g.title}</div>
               <div className="flex flex-wrap gap-1.5">
                 {g.items.map((it) => (
                   <span
                     key={it}
-                    className="terminal-font text-[11px] px-2 py-0.5 rounded-md bg-secondary/60 text-foreground/80 border border-border"
+                    className="terminal-font text-[11px] px-2 py-0.5 rounded-full bg-black/20 text-foreground/80 border border-white/10"
                   >
                     {it}
                   </span>

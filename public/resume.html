@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ishit Atwal - CV</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --text: #111827;
+        --muted: #4b5563;
+        --line: #d1d5db;
+        --accent: #0f766e;
+        --bg: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #f3f4f6;
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.5;
+      }
+
+      .page {
+        max-width: 900px;
+        margin: 24px auto;
+        background: var(--bg);
+        padding: 36px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 38px;
+        letter-spacing: 0.02em;
+      }
+
+      .contact {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 22px;
+      }
+
+      h2 {
+        margin: 22px 0 8px;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 6px;
+      }
+
+      .item {
+        margin: 14px 0;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .title {
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .subtle {
+        color: var(--muted);
+        font-style: italic;
+        font-size: 14px;
+      }
+
+      ul {
+        margin: 8px 0 0 18px;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 6px;
+      }
+
+      .skills {
+        columns: 2;
+        column-gap: 28px;
+      }
+
+      .skills li {
+        break-inside: avoid;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .page {
+          margin: 0;
+          box-shadow: none;
+          max-width: none;
+          padding: 0;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          margin: 0;
+          padding: 20px;
+        }
+
+        .skills {
+          columns: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>ISHIT ATWAL</h1>
+        <div class="contact">+91-7876131708 | ishitatwal20@gmail.com</div>
+      </header>
+
+      <section>
+        <h2>Education</h2>
+        <div class="item">
+          <div class="row">
+            <div class="title">GNA University</div>
+            <div class="subtle">Aug 2022 - June 2026</div>
+          </div>
+          <div class="subtle">Bachelor of Technology in Computer Science, Phagwara, Punjab, India</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+        <div class="item">
+          <div class="row">
+            <div class="title">DevOps Engineer - techcadd Mohali</div>
+            <div class="subtle">Jul 2026 - Present (Full Time)</div>
+          </div>
+          <div class="subtle">Mohali, Punjab</div>
+          <ul>
+            <li>Managing AWS infrastructure using EC2, S3, IAM, VPC, and CloudWatch.</li>
+            <li>Deploying applications on Linux servers with Nginx, Apache, Docker, and PM2.</li>
+            <li>Implementing Kubernetes for container orchestration and Jenkins-based CI/CD pipelines.</li>
+            <li>Monitoring, troubleshooting, and optimizing cloud infrastructure and application performance.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <div class="title">Junior Cloud Computing Intern at techcadd Mohali</div>
+            <div class="subtle">Jan 2026 - July 2026 (6 Months)</div>
+          </div>
+          <div class="subtle">Mohali, Punjab</div>
+          <ul>
+            <li>Worked on AWS cloud infrastructure deployment and management using EC2, S3, IAM, VPC, CloudWatch, and DevOps tools.</li>
+            <li>Deployed and managed web applications on Linux servers using Nginx, Apache, and PM2.</li>
+            <li>Containerized applications using Docker and implemented Kubernetes (K8s) for orchestration and scalability.</li>
+            <li>Built CI/CD pipelines using Jenkins, Git, and GitHub to automate build, testing, and deployment processes.</li>
+            <li>Monitored application performance, server health, and logs using AWS CloudWatch and Linux monitoring tools.</li>
+            <li>Assisted in cloud architecture setup, deployment automation, and troubleshooting infrastructure issues in AWS environments.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Technical Skills</h2>
+        <ul class="skills">
+          <li>Cloud Platforms: AWS, Microsoft Azure, Google Cloud Platform (GCP)</li>
+          <li>Scripting: Bash, Python</li>
+          <li>Version Control: Git, GitHub, GitLab</li>
+          <li>Web Servers: Nginx, Apache, HAProxy</li>
+          <li>Infrastructure as Code: Terraform, Ansible</li>
+          <li>Monitoring & Logging: Prometheus, Grafana, ELK Stack, AWS CloudWatch, AWS CloudTrail, New Relic</li>
+          <li>Databases: Amazon RDS, MySQL, PostgreSQL, MongoDB</li>
+          <li>CI/CD: Jenkins, GitHub Actions, GitLab CI/CD, AWS CodePipeline</li>
+          <li>Containerization & Orchestration: Docker, Kubernetes, Amazon ECS, Amazon EKS</li>
+          <li>Security: AWS IAM, AWS WAF, AWS Secrets Manager, SonarQube, HashiCorp Vault</li>
+          <li>Networking: VPC, VPC Peering, Public & Private Subnets, Internet Gateway, NAT Gateway, Route 53, Security Groups, Network ACLs</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <div class="item">
+          <div class="title">Virtual Academy Web Application Deployment</div>
+          <div class="subtle">Deployed the Virtual Academy web application on AWS EC2 using Linux, Nginx, and PM2.</div>
+        </div>
+        <div class="item">
+          <div class="title">Cloud Healthcare Management System</div>
+          <div class="subtle">Developed and deployed a cloud-based healthcare management system using AWS, Linux, Node.js, and MongoDB.</div>
+        </div>
+        <div class="item">
+          <div class="title">Django Notes App Deployment</div>
+          <div class="subtle">Containerized and deployed a Django Notes application using Docker for consistent and scalable deployment.</div>
+        </div>
+        <div class="item">
+          <div class="title">Sanjh Kitab Ghar (Live Project)</div>
+          <div class="subtle">Deployed and managed the Sanjh Kitab Ghar web application on AWS EC2 using Linux, Nginx, and PM2. Configured domain hosting, reverse proxy, SSL (HTTPS), and production deployment.</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

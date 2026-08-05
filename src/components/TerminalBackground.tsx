@@ -1,60 +1,46 @@
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-const lines = [
-  "$ kubectl get pods --all-namespaces",
-  "NAME                READY   STATUS    RESTARTS",
-  "api-server-7f8c9    1/1     Running   0",
-  "$ docker ps -a",
-  "CONTAINER ID   IMAGE              STATUS",
-  "a7f3e9c2b1d8   nginx:alpine       Up 3 days",
-  "$ terraform apply -auto-approve",
-  "Plan: 12 to add, 0 to change, 0 to destroy.",
-  "aws_instance.web: Creating...",
-  "aws_s3_bucket.assets: Creation complete after 2s",
-  "$ aws ec2 describe-instances --region us-east-1",
-  "$ ansible-playbook -i hosts deploy.yml",
-  "PLAY [Deploy application] ***************",
-  "TASK [Gathering Facts] ******************",
-  "ok: [web-01.prod]",
-  "$ helm upgrade --install api ./charts/api",
-  "Release \"api\" has been upgraded. Happy Helming!",
-  "$ git push origin main",
-  "$ jenkins build --job deploy-prod",
-  "[INFO] Pipeline completed successfully",
-];
-
-interface Col { id: number; left: number; delay: number; speed: number; }
+const gridLines = Array.from({ length: 8 }, (_, i) => i);
 
 export const TerminalBackground = () => {
-  const [cols, setCols] = useState<Col[]>([]);
-
-  useEffect(() => {
-    const c: Col[] = Array.from({ length: 6 }).map((_, i) => ({
-      id: i,
-      left: (i * 17 + Math.random() * 8) % 95,
-      delay: -Math.random() * 30,
-      speed: 35 + Math.random() * 25,
-    }));
-    setCols(c);
-  }, []);
-
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.07] dark:opacity-[0.13]">
-      {cols.map((c) => (
-        <div
-          key={c.id}
-          className="absolute top-0 terminal-font text-[11px] leading-relaxed text-brand-green whitespace-nowrap"
-          style={{
-            left: `${c.left}%`,
-            animation: `scroll-up ${c.speed}s linear infinite`,
-            animationDelay: `${c.delay}s`,
-          }}
-        >
-          {[...lines, ...lines].map((line, i) => (
-            <div key={i} className="py-0.5">{line}</div>
-          ))}
-        </div>
-      ))}
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_30%),radial-gradient(circle_at_75%_20%,rgba(34,197,94,0.12),transparent_25%),radial-gradient(circle_at_bottom,rgba(2,6,23,0.92),rgba(2,6,23,1)_72%)]" />
+
+      <div className="absolute inset-0 opacity-[0.18] dark:opacity-[0.28]">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" />
+      </div>
+
+      <motion.div
+        className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-sky-400/20 blur-3xl"
+        animate={{ x: [0, 20, 0], y: [0, 18, 0], scale: [1, 1.08, 1] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-24 right-0 h-96 w-96 rounded-full bg-emerald-400/12 blur-3xl"
+        animate={{ x: [0, -24, 0], y: [0, 10, 0], scale: [1, 1.06, 1] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-[-4rem] left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-indigo-500/12 blur-3xl"
+        animate={{ scale: [1, 1.12, 1], opacity: [0.42, 0.65, 0.42] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
+      <div className="absolute inset-y-0 left-1/2 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+
+      <div className="absolute inset-0 opacity-30 dark:opacity-40">
+        {gridLines.map((i) => (
+          <motion.div
+            key={i}
+            className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-sky-300/10 to-transparent"
+            style={{ top: `${12 + i * 11}%` }}
+            animate={{ opacity: [0.06, 0.16, 0.06], x: [0, 14, 0] }}
+            transition={{ duration: 8 + i, repeat: Infinity, ease: "easeInOut" }}
+          />
+        ))}
+      </div>
     </div>
   );
 };

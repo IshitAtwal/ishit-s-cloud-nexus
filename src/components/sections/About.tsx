@@ -6,24 +6,24 @@ const items = [
   {
     icon: GraduationCap,
     title: "B.Tech Computer Science",
-    desc: "GNA University · 2022 – 2026",
+    desc: "GNA University · Aug 2022 – June 2026",
   },
   {
     icon: Cloud,
-    title: "Cloud Computing Focus",
-    desc: "AWS, Azure, infrastructure architecture",
+    title: "DevOps Experience",
+    desc: "techcadd Mohali · DevOps Engineer",
   },
   {
     icon: Cog,
-    title: "DevOps & Automation",
-    desc: "CI/CD pipelines, containers, IaC",
+    title: "Cloud & Automation",
+    desc: "AWS, Docker, Kubernetes, Jenkins, IaC",
   },
 ];
 
 export const About = () => (
   <section id="about" className="section-padding relative">
     <div className="mx-auto max-w-5xl">
-      <SectionHeading eyebrow="01 — About" title="Engineer at the intersection of code and infrastructure." />
+      <SectionHeading eyebrow="01 — About" title="Engineer at the intersection of cloud, code, and automation." />
 
       <div className="grid md:grid-cols-5 gap-8 items-start">
         <motion.p
@@ -33,14 +33,14 @@ export const About = () => (
           transition={{ duration: 0.6 }}
           className="md:col-span-3 text-lg text-muted-foreground leading-relaxed"
         >
-          I'm a Computer Science undergraduate at GNA University with a deep focus on
-          cloud computing, DevOps, and automation. I build resilient infrastructure,
-          ship containerized workloads, and design CI/CD pipelines that turn manual
-          chaos into repeatable systems.
+          I'm a Computer Science undergraduate at GNA University with hands-on
+          experience as a DevOps Engineer and Junior Cloud Computing Intern at
+          techcadd Mohali. I work across AWS, Linux, Docker, Kubernetes, and Jenkins
+          to build resilient infrastructure and automate deployments.
           <br /><br />
-          My approach blends pragmatic engineering with thoughtful architecture —
-          shipping cloud-native solutions on AWS and Azure, automating the boring
-          parts, and treating reliability as a first-class feature.
+          My focus is on shipping secure, scalable, and reliable cloud systems,
+          including EC2-based deployments, CI/CD pipelines, container orchestration,
+          and production application monitoring.
         </motion.p>
 
         <div className="md:col-span-2 space-y-4">
@@ -51,7 +51,7 @@ export const About = () => (
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass rounded-2xl p-4 shadow-glass flex items-start gap-3 hover:shadow-glow transition-shadow"
+              className="glass rounded-[1.25rem] p-4 shadow-glass flex items-start gap-3 hover:border-sky-400/30 hover:shadow-[0_20px_60px_-24px_rgba(59,130,246,0.45)] transition-all"
             >
               <div className="shrink-0 h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white">
                 <it.icon className="h-5 w-5" />

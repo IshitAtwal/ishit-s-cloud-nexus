@@ -24,11 +24,12 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-muted/30 relative">
+    <section id="contact" className="section-padding relative">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
           eyebrow="06 — Contact"
           title="Let's build something reliable together."
+          subtitle="Open to DevOps, cloud, and infrastructure roles."
         />
 
         <div className="grid md:grid-cols-5 gap-6">
@@ -41,10 +42,10 @@ export const Contact = () => {
           >
             <a
               href="mailto:ishitatwal20@gmail.com"
-              className="block glass rounded-2xl p-5 shadow-glass hover:shadow-glow transition-shadow"
+              className="block rounded-[1.4rem] border border-white/10 bg-white/5 p-5 shadow-glass hover:border-sky-400/25 hover:shadow-[0_20px_60px_-28px_rgba(59,130,246,0.45)] transition-all"
             >
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white">
+                <div className="h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white shadow-accent-glow">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
@@ -56,10 +57,10 @@ export const Contact = () => {
 
             <a
               href="tel:+917876131708"
-              className="block glass rounded-2xl p-5 shadow-glass hover:shadow-glow transition-shadow"
+              className="block rounded-[1.4rem] border border-white/10 bg-white/5 p-5 shadow-glass hover:border-sky-400/25 hover:shadow-[0_20px_60px_-28px_rgba(59,130,246,0.45)] transition-all"
             >
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white">
+                <div className="h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white shadow-accent-glow">
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
@@ -69,9 +70,11 @@ export const Contact = () => {
               </div>
             </a>
 
-            <div className="glass rounded-2xl p-5 shadow-glass terminal-font text-sm">
+            <div className="rounded-[1.4rem] border border-white/10 bg-[#08101e]/90 p-5 shadow-glass terminal-font text-sm">
               <div className="text-brand-green">$ whoami</div>
               <div className="text-foreground/80 mt-1">ishit_atwal</div>
+              <div className="text-brand-green mt-2">$ focus</div>
+              <div className="text-foreground/80 mt-1">devops_cloud_linux_automation</div>
               <div className="text-brand-green mt-2">$ status</div>
               <div className="text-foreground/80 mt-1">open_to_opportunities</div>
             </div>
@@ -83,25 +86,25 @@ export const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="md:col-span-3 glass rounded-3xl p-6 md:p-8 shadow-glass space-y-4"
+            className="md:col-span-3 rounded-[1.6rem] border border-white/10 bg-white/5 p-6 md:p-8 shadow-glass space-y-4 backdrop-blur-md"
           >
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <Label htmlFor="name">Name</Label>
-                <Input id="name" name="name" required placeholder="Your name" className="bg-background/50" />
+                <Input id="name" name="name" required placeholder="Your name" className="bg-background/50 border-white/10" />
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" required placeholder="you@example.com" className="bg-background/50" />
+                <Input id="email" name="email" type="email" required placeholder="you@example.com" className="bg-background/50 border-white/10" />
               </div>
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="subject">Subject</Label>
-              <Input id="subject" name="subject" required placeholder="What's this about?" className="bg-background/50" />
+              <Input id="subject" name="subject" required placeholder="What's this about?" className="bg-background/50 border-white/10" />
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="message">Message</Label>
-              <Textarea id="message" name="message" required rows={5} placeholder="Tell me about your project..." className="bg-background/50 resize-none" />
+              <Textarea id="message" name="message" required rows={5} placeholder="Tell me about your project..." className="bg-background/50 border-white/10 resize-none" />
             </div>
             <Button
               type="submit"

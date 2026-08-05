@@ -71,6 +71,7 @@ export const TerminalSection = () => {
         <SectionHeading
           eyebrow="05 — Terminal"
           title="Pipelines, in real time."
+          subtitle="A live terminal-style panel to reinforce the DevOps theme without overwhelming the page."
         />
 
         <motion.div
@@ -78,16 +79,16 @@ export const TerminalSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="rounded-2xl overflow-hidden shadow-card border border-border bg-terminal-bg"
+          className="rounded-[1.6rem] overflow-hidden shadow-card border border-white/10 bg-[#07111f]"
         >
           {/* title bar */}
-          <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/5 bg-black/30">
+          <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/5 bg-white/5">
             <div className="flex items-center gap-1.5">
               <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
               <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
               <span className="h-3 w-3 rounded-full bg-[#28c840]" />
             </div>
-            <div className="terminal-font text-xs text-white/50">ishit@devops: ~/infra</div>
+            <div className="terminal-font text-xs text-white/60">ishit@devops: ~/infra</div>
             <div className="w-12" />
           </div>
 
