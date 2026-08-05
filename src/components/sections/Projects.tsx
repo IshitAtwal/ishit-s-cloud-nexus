@@ -1,82 +1,86 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight, Boxes, Globe2, Layers3, LockKeyhole } from "lucide-react";
 import { SectionHeading } from "../SectionHeading";
 
 const projects = [
   {
-    title: "Virtual Academy Web Application Deployment",
-    desc: "Deployed the Virtual Academy web application on AWS EC2 using Linux, Nginx, and PM2.",
+    title: "Virtual Academy",
+    type: "Application delivery",
+    desc: "Deployed the Virtual Academy application on AWS EC2 with Linux, Nginx, and PM2.",
     stack: ["AWS EC2", "Linux", "Nginx", "PM2"],
+    icon: Globe2,
+    accent: "from-[#6144f5] via-[#2d2598] to-[#09061c]",
   },
   {
-    title: "Cloud Healthcare Management System",
-    desc: "Developed and deployed a cloud-based healthcare management system using AWS, Linux, Node.js, and MongoDB.",
-    stack: ["AWS", "Linux", "Node.js", "MongoDB"],
+    title: "Cloud Healthcare",
+    type: "Cloud application",
+    desc: "Developed and deployed a healthcare management system with AWS, Node.js, and MongoDB.",
+    stack: ["AWS", "Node.js", "MongoDB", "Linux"],
+    icon: LockKeyhole,
+    accent: "from-[#168cc6] via-[#2548a2] to-[#09061c]",
   },
   {
-    title: "Django Notes App Deployment",
-    desc: "Containerized and deployed a Django Notes application using Docker for consistent and scalable deployment.",
+    title: "Django Notes",
+    type: "Container platform",
+    desc: "Containerised and deployed a Django Notes application for consistent, scalable releases.",
     stack: ["Django", "Docker", "Deployment"],
+    icon: Boxes,
+    accent: "from-[#8153e7] via-[#37309a] to-[#09061c]",
   },
   {
-    title: "Sanjh Kitab Ghar (Live Project)",
-    desc: "Deployed and managed the Sanjh Kitab Ghar web application on AWS EC2 using Linux, Nginx, and PM2, with domain hosting, reverse proxy, and SSL.",
-    stack: ["AWS EC2", "Linux", "Nginx", "SSL"],
+    title: "Sanjh Kitab Ghar",
+    type: "Live production site",
+    desc: "Managed a live EC2 deployment with domain hosting, reverse proxy, SSL, and PM2.",
+    stack: ["AWS EC2", "Nginx", "SSL", "PM2"],
+    icon: Layers3,
+    accent: "from-[#00a9bb] via-[#2349ad] to-[#09061c]",
   },
 ];
 
 export const Projects = () => (
-  <section id="projects" className="section-padding bg-muted/30 relative">
-    <div className="mx-auto max-w-6xl">
+  <section id="projects" className="section-padding relative">
+    <div className="mx-auto max-w-7xl">
       <SectionHeading
-        eyebrow="04 — Projects"
-        title="Selected deployments presented like product cards."
+        eyebrow="04 · Selected work"
+        title="Deployment stories, designed as systems."
+        subtitle="A selection of the environments I have configured, automated, and supported from infrastructure to live release."
       />
 
-      <div className="grid md:grid-cols-2 gap-5">
-        {projects.map((p, i) => (
+      <div className="grid gap-5 md:grid-cols-2">
+        {projects.map((project, index) => (
           <motion.article
-            key={p.title}
+            key={project.title}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: i * 0.07 }}
+            transition={{ duration: 0.6, delay: index * 0.07 }}
             whileHover={{ y: -6 }}
-            className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 p-6 shadow-glass hover:border-sky-400/30 hover:shadow-[0_24px_80px_-30px_rgba(59,130,246,0.45)] transition-all"
+            className="group overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#0a0718] shadow-card"
           >
-            <div className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-brand-sky/0 group-hover:bg-brand-sky/15 blur-3xl transition-all duration-700" />
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-            <div className="relative">
-              <div className="terminal-font text-[11px] text-brand-sky mb-2 flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
-                project_{String(i + 1).padStart(2, "0")}.tf
+            <div className={`relative h-52 overflow-hidden bg-gradient-to-br ${project.accent} p-5 sm:h-60`}>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(255,255,255,0.34),transparent_6%),radial-gradient(circle_at_24%_108%,rgba(139,113,255,0.72),transparent_42%)]" />
+              <div className="absolute -bottom-12 left-1/2 h-40 w-[115%] -translate-x-1/2 rounded-[50%] border border-white/40 bg-[#08060e]/95 shadow-[0_-16px_42px_rgba(184,151,255,0.52)]" />
+              <div className="relative flex items-start justify-between">
+                <span className="rounded-full border border-white/20 bg-black/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/78 backdrop-blur-sm">{project.type}</span>
+                <span className="terminal-font text-xs text-white/65">/{String(index + 1).padStart(2, "0")}</span>
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold mb-2 group-hover:text-gradient transition-all">
-                {p.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">{p.desc}</p>
-
-              <div className="flex flex-wrap gap-1.5 mb-5">
-                {p.stack.map((s) => (
-                  <span
-                    key={s}
-                    className="terminal-font text-[11px] px-2 py-0.5 rounded-full bg-black/20 border border-white/10 text-foreground/80"
-                  >
-                    {s}
-                  </span>
-                ))}
+              <div className="relative mt-10 grid h-14 w-14 place-items-center rounded-2xl border border-white/20 bg-white/10 text-white shadow-[0_10px_30px_rgba(9,5,29,0.26)] backdrop-blur-md">
+                <project.icon className="h-6 w-6" />
               </div>
+            </div>
 
-              <div className="flex items-center gap-2">
-                <Button size="sm" variant="outline" className="rounded-full bg-white/5 border-white/10 hover:bg-white/10">
-                  <Github className="h-3.5 w-3.5 mr-1.5" /> GitHub
-                </Button>
-                <Button size="sm" className="rounded-full bg-gradient-accent text-white border-0 hover:opacity-95">
-                  <ExternalLink className="h-3.5 w-3.5 mr-1.5" /> Demo
-                </Button>
+            <div className="p-6 sm:p-7">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="display-font text-2xl font-semibold tracking-[-0.045em] text-white">{project.title}</h3>
+                  <p className="mt-2 max-w-md text-sm leading-6 text-white/56">{project.desc}</p>
+                </div>
+                <span className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 text-white/48 transition-all group-hover:border-brand-green/50 group-hover:text-brand-green"><ArrowUpRight className="h-4 w-4" /></span>
               </div>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.stack.map((item) => <span key={item} className="rounded-full border border-white/10 bg-white/[0.045] px-2.5 py-1 text-[10px] font-medium text-white/68">{item}</span>)}
+              </div>
+              <a href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.17em] text-brand-sky-soft transition-colors hover:text-white">Discuss this build <ArrowUpRight className="h-3.5 w-3.5" /></a>
             </div>
           </motion.article>
         ))}

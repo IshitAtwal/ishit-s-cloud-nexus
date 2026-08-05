@@ -1,85 +1,65 @@
 import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, Check } from "lucide-react";
 import { SectionHeading } from "../SectionHeading";
 
 const experiences = [
   {
     role: "DevOps Engineer",
     company: "techcadd Mohali",
-    period: "Jul 2026 — Present (Full Time)",
-    points: [
-      "Managing AWS infrastructure using EC2, S3, IAM, VPC, and CloudWatch.",
-      "Deploying applications on Linux servers with Nginx, Apache, Docker, and PM2.",
-      "Implementing Kubernetes for container orchestration and Jenkins-based CI/CD pipelines.",
-      "Monitoring, troubleshooting, and optimizing cloud infrastructure and application performance.",
-    ],
+    period: "Jul 2026 — Present",
+    summary: "Owning cloud infrastructure, deployment workflows, and production stability.",
+    points: ["AWS infrastructure across EC2, S3, IAM, VPC, and CloudWatch", "Linux application delivery with Nginx, Apache, Docker, and PM2", "Kubernetes orchestration and Jenkins CI/CD automation", "Monitoring, troubleshooting, and performance optimisation"],
   },
   {
     role: "Junior Cloud Computing Intern",
     company: "techcadd Mohali",
-    period: "Jan 2026 — Jul 2026 (6 Months)",
-    points: [
-      "Working on AWS cloud infrastructure deployment and management using EC2, S3, IAM, VPC, CloudWatch, and DevOps tools.",
-      "Deploying and managing web applications on Linux servers using Nginx, Apache, and PM2.",
-      "Containerizing applications using Docker and implementing Kubernetes (K8s) for orchestration and scalability.",
-      "Building CI/CD pipelines using Jenkins, Git, and GitHub to automate build, testing, and deployment processes.",
-      "Monitoring application performance, server health, and logs using AWS CloudWatch and Linux monitoring tools.",
-      "Assisting in cloud architecture setup, deployment automation, and troubleshooting infrastructure issues in AWS environments.",
-    ],
+    period: "Jan 2026 — Jul 2026",
+    summary: "Building the hands-on cloud and deployment practice behind my DevOps work.",
+    points: ["AWS resource deployment and cloud environment management", "Containerising applications with Docker and Kubernetes", "Automating builds and releases with Jenkins, Git, and GitHub", "Monitoring services, logs, and server health"],
   },
 ];
 
 export const Experience = () => (
   <section id="experience" className="section-padding relative">
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto max-w-7xl">
       <SectionHeading
-        eyebrow="02 — Experience"
-        title="A track record of shipping cloud and DevOps systems."
-        subtitle="Hands-on infrastructure work across AWS, Linux, containers, and CI/CD."
+        eyebrow="02 · Experience"
+        title="Practical infrastructure work, end to end."
+        subtitle="From a blank server to an observable production environment, each role has been a study in making systems easier to operate."
       />
 
-      <div className="relative">
-        {/* timeline line */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-sky/30 via-brand-green/50 to-transparent md:-translate-x-px" />
-
-        <div className="space-y-10">
-          {experiences.map((exp, i) => (
-            <motion.div
-              key={exp.role + i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.05 }}
-              className={`relative md:grid md:grid-cols-2 md:gap-12 ${i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}
-            >
-              {/* dot */}
-              <div className="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 h-3 w-3 rounded-full bg-brand-green ring-4 ring-background shadow-accent-glow" />
-
-              <div className={i % 2 === 0 ? "md:text-right md:pr-8" : "md:pl-8"}>
-                <div className="pl-12 md:pl-0">
-                  <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 terminal-font text-[11px] uppercase tracking-[0.2em] text-brand-sky mb-3">
-                    {exp.period}
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-foreground">{exp.role}</h3>
-                  <div className="mt-1 text-muted-foreground">{exp.company}</div>
-                </div>
+      <div className="grid gap-5 lg:grid-cols-2">
+        {experiences.map((experience, index) => (
+          <motion.article
+            key={experience.role}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.65, delay: index * 0.09 }}
+            className="section-frame min-h-full p-6 sm:p-8"
+          >
+            <div className="relative flex items-start justify-between gap-4">
+              <div>
+                <p className="eyebrow text-[9px]">{experience.period}</p>
+                <h3 className="display-font mt-5 text-2xl font-semibold tracking-[-0.045em] text-white">{experience.role}</h3>
+                <p className="mt-1 text-sm text-brand-sky-soft">{experience.company}</p>
               </div>
-
-              <div className={i % 2 === 0 ? "md:pl-8 mt-4 md:mt-0" : "md:pr-8 mt-4 md:mt-0 md:text-right"}>
-                <div className="ml-12 md:ml-0 rounded-[1.5rem] border border-white/10 bg-white/5 p-5 shadow-glass backdrop-blur-md">
-                  <ul className="space-y-3">
-                    {exp.points.map((p) => (
-                      <li key={p} className="flex items-start gap-3 rounded-2xl border border-white/5 bg-black/10 px-3 py-3 text-sm text-muted-foreground">
-                        <Briefcase className="h-3.5 w-3.5 mt-1 shrink-0 text-brand-green" />
-                        <span className="text-foreground/90">{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.045] text-white/70"><BriefcaseBusiness className="h-4 w-4" /></span>
+            </div>
+            <p className="relative mt-6 border-l border-brand-sky/55 pl-4 text-sm leading-6 text-white/63">{experience.summary}</p>
+            <ul className="relative mt-7 space-y-3">
+              {experience.points.map((point) => (
+                <li key={point} className="flex gap-3 text-sm leading-6 text-white/74">
+                  <Check className="mt-1 h-3.5 w-3.5 shrink-0 text-brand-green" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <div className="relative mt-8 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+              <span>Role archive</span><ArrowUpRight className="h-3.5 w-3.5" />
+            </div>
+          </motion.article>
+        ))}
       </div>
     </div>
   </section>

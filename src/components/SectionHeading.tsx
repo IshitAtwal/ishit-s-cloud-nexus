@@ -7,22 +7,22 @@ interface Props {
 }
 
 export const SectionHeading = ({ eyebrow, title, subtitle }: Props) => (
-  <div className="mb-14 max-w-3xl">
+  <div className="relative mb-12 max-w-4xl lg:mb-16">
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5 }}
-      className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 terminal-font text-[11px] uppercase tracking-[0.22em] text-brand-sky mb-4"
+      className="eyebrow mb-5"
     >
       {eyebrow}
     </motion.div>
     <motion.h2
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay: 0.05 }}
-      className="display-font text-3xl md:text-5xl font-semibold tracking-tight text-balance"
+      transition={{ duration: 0.65, delay: 0.05 }}
+      className="display-font text-balance text-4xl font-semibold leading-[0.98] tracking-[-0.055em] text-white sm:text-5xl lg:text-6xl"
     >
       {title}
     </motion.h2>
@@ -31,8 +31,8 @@ export const SectionHeading = ({ eyebrow, title, subtitle }: Props) => (
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, delay: 0.15 }}
-        className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl"
+        transition={{ duration: 0.6, delay: 0.14 }}
+        className="mt-5 max-w-2xl text-base leading-relaxed text-white/58 sm:text-lg"
       >
         {subtitle}
       </motion.p>

@@ -1,244 +1,141 @@
 import { motion } from "framer-motion";
-import { ArrowDown, FileDown, FolderGit2, MoveRight, ServerCog, Workflow, ShieldCheck } from "lucide-react";
+import { ArrowDown, ArrowUpRight, FileDown, ServerCog, ShieldCheck, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalBackground } from "../TerminalBackground";
-import { cn } from "@/lib/utils";
 
-const leftTags = ["AWS ENGINEER", "LINUX SERVERS", "DEVOPS ENGINEER"];
-const rightTags = ["KUBERNETES", "JENKINS CI/CD", "MONITORING", "DOCKER", "VPC / IAM"];
-
-const serviceCards = [
-  {
-    icon: ServerCog,
-    title: "Infrastructure",
-    desc: "AWS EC2, VPC, S3, IAM, CloudWatch, CloudTrail",
-  },
-  {
-    icon: Workflow,
-    title: "Delivery",
-    desc: "Jenkins pipelines, GitHub Actions, Docker, PM2",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Reliability",
-    desc: "Nginx, Apache, Kubernetes, alerts, troubleshooting",
-  },
+const capabilities = [
+  { label: "Cloud architecture", icon: ServerCog, className: "bottom-[27%] left-[5%]" },
+  { label: "CI/CD delivery", icon: Workflow, className: "bottom-[31%] right-[6%]" },
+  { label: "Reliable operations", icon: ShieldCheck, className: "bottom-[21%] right-[11%]" },
 ];
 
-const galleryTiles = [
-  {
-    title: "AWS Infra",
-    subtitle: "EC2, VPC, IAM",
-    className: "bg-[radial-gradient(circle_at_25%_20%,rgba(59,130,246,0.22),transparent_30%),linear-gradient(135deg,#eaf4ff_0%,#cfe6ff_48%,#eff6ff_100%)]",
-  },
-  {
-    title: "CI/CD",
-    subtitle: "Jenkins, GitHub Actions",
-    className: "bg-[radial-gradient(circle_at_70%_20%,rgba(16,185,129,0.18),transparent_26%),linear-gradient(135deg,#ecfdf5_0%,#d1fae5_46%,#f0fdf4_100%)]",
-  },
-  {
-    title: "Containers",
-    subtitle: "Docker, Kubernetes",
-    className: "bg-[radial-gradient(circle_at_35%_30%,rgba(14,165,233,0.18),transparent_30%),linear-gradient(135deg,#f8fbff_0%,#dbeafe_50%,#eef6ff_100%)]",
-  },
-  {
-    title: "Monitoring",
-    subtitle: "CloudWatch, Grafana",
-    className: "bg-[radial-gradient(circle_at_60%_25%,rgba(6,182,212,0.18),transparent_26%),linear-gradient(135deg,#f0f9ff_0%,#e0f2fe_54%,#f8fdff_100%)]",
-  },
-];
+const stack = ["AWS", "Docker", "Kubernetes", "Terraform", "Linux"];
 
-export const Hero = () => {
-  return (
-    <section
-      id="home"
-      className="relative min-h-screen overflow-hidden bg-[#02050f] pt-24"
-    >
-      <TerminalBackground />
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid min-h-[calc(100vh-6rem)] items-center py-6">
-          <div className="relative overflow-hidden rounded-[2.75rem] border border-white/10 bg-[#050817]/92 shadow-[0_40px_120px_-30px_rgba(8,47,129,0.85)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_30%,rgba(37,99,235,0.8),transparent_28%),radial-gradient(circle_at_68%_78%,rgba(14,165,233,0.55),transparent_22%),radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.08),transparent_20%)]" />
-            <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(8,12,24,0.15),rgba(0,0,0,0.75))]" />
+const Cloud = ({ className, delay, id }: { className: string; delay: number; id: string }) => (
+  <motion.svg
+    viewBox="0 0 360 170"
+    initial={{ opacity: 0, y: 16 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
+    className={className}
+    aria-hidden="true"
+  >
+    <defs>
+      <linearGradient id={`cloud-fill-${id}`} x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.78" />
+        <stop offset="42%" stopColor="#4f32cf" stopOpacity="0.58" />
+        <stop offset="100%" stopColor="#090511" stopOpacity="0.96" />
+      </linearGradient>
+      <filter id={`cloud-glow-${id}`} x="-20%" y="-50%" width="140%" height="200%">
+        <feGaussianBlur stdDeviation="7" />
+      </filter>
+    </defs>
+    <path
+      d="M25 137C9 137 0 125 0 109c0-19 15-34 35-34 6-23 27-39 52-39 27 0 50 18 55 43 10-10 25-16 41-16 29 0 53 20 58 47 8-7 18-11 29-11 25 0 45 16 51 38H25Z"
+      fill="#805cff"
+      fillOpacity="0.52"
+      filter={`url(#cloud-glow-${id})`}
+    />
+    <path
+      d="M25 137C9 137 0 125 0 109c0-19 15-34 35-34 6-23 27-39 52-39 27 0 50 18 55 43 10-10 25-16 41-16 29 0 53 20 58 47 8-7 18-11 29-11 25 0 45 16 51 38H25Z"
+      fill={`url(#cloud-fill-${id})`}
+      stroke="#c4b5fd"
+      strokeOpacity="0.48"
+      strokeWidth="1.25"
+    />
+    <path d="M32 132H329" stroke="#d8d2ff" strokeOpacity="0.42" strokeWidth="1.5" />
+  </motion.svg>
+);
 
-            <div className="relative p-5 sm:p-6 lg:p-8 xl:px-10 xl:py-7">
-              <div className="flex items-center justify-between gap-4 text-[11px] uppercase tracking-[0.28em] text-white/70">
-                <div className="flex items-center gap-3">
-                  <div className="text-white/90 font-semibold tracking-[0.18em]">ISHIT</div>
-                  <div className="hidden md:flex items-center gap-2 text-brand-green lowercase tracking-normal">
-                    <span className="h-2 w-2 rounded-full bg-brand-green" />
-                    available for work
-                  </div>
-                </div>
-                <div className="hidden md:flex items-center gap-8 text-white/80">
-                  <span>Self</span>
-                  <span>Service</span>
-                  <span>Blog</span>
-                </div>
-                <a href="#contact" className="rounded-full border border-white/12 bg-white/8 px-4 py-2 text-white/90 transition-colors hover:bg-white/12">
-                  Hire Me
-                </a>
-              </div>
+export const Hero = () => (
+  <section id="home" className="relative isolate min-h-screen overflow-hidden bg-[#020109] pt-24">
+    <div className="hero-stars absolute inset-0 opacity-70" />
+    <div className="absolute inset-x-0 top-[12%] h-96 bg-[radial-gradient(ellipse_at_center,rgba(83,54,218,0.36),transparent_67%)] blur-2xl" />
+    <div className="orbit-ring left-[6%] top-[22%] h-56 w-56 opacity-50" />
+    <div className="orbit-ring right-[7%] top-[19%] h-72 w-72 opacity-35 [animation-duration:34s]" />
 
-              <div className="mt-10 grid gap-8 xl:grid-cols-[0.95fr_1.1fr_0.95fr] xl:items-center">
-                <div className="hidden xl:flex flex-col gap-3 self-start pt-24">
-                  {leftTags.map((tag) => (
-                    <div key={tag} className="w-fit rounded-full border border-white/12 bg-white/7 px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm">
-                      {tag}
-                    </div>
-                  ))}
-                </div>
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[72%] overflow-hidden">
+      <div className="hero-planet" />
+      <Cloud className="absolute bottom-[9.25rem] left-[-4rem] w-64 sm:bottom-[10.5rem] sm:left-[4%] sm:w-80" delay={0.55} id="left" />
+      <Cloud className="absolute bottom-[13.25rem] left-[18%] hidden w-44 opacity-75 lg:block" delay={0.7} id="mid-left" />
+      <Cloud className="absolute bottom-[11rem] right-[2%] w-64 sm:bottom-[12.5rem] sm:right-[5%] sm:w-80" delay={0.62} id="right" />
+      <Cloud className="absolute bottom-[15rem] right-[22%] hidden w-44 opacity-75 lg:block" delay={0.78} id="mid-right" />
+      <div className="hero-horizon" />
+    </div>
 
-                <div className="relative px-2 sm:px-6 xl:px-0 text-center">
-                  <motion.div
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.15 }}
-                    className="mx-auto max-w-4xl"
-                  >
-                    <div className="text-[11px] sm:text-sm uppercase tracking-[0.35em] text-white/70">DevOps Engineer</div>
-                    <h1 className="display-font mt-4 text-[clamp(4rem,13vw,10rem)] leading-[0.9] font-black tracking-[-0.08em] text-transparent bg-[linear-gradient(180deg,#ffffff_0%,#8dc9ff_42%,#2f78ff_100%)] bg-clip-text drop-shadow-[0_8px_32px_rgba(59,130,246,0.45)]">
-                      ISHIT ATWAL
-                    </h1>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.9, delay: 0.25 }}
-                    className="mx-auto mt-8 w-full max-w-[50rem] rounded-[2rem] bg-[#f8fbff] text-slate-900 shadow-[0_30px_80px_-24px_rgba(15,23,42,0.8)] overflow-hidden border border-sky-100"
-                  >
-                    <div className="p-5 sm:p-6">
-                      <div className="rounded-[1.35rem] bg-[linear-gradient(180deg,#ffffff,#eef6ff)] p-4 sm:p-5 shadow-[inset_0_0_0_1px_rgba(148,163,184,0.18)]">
-                        <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr] sm:items-start">
-                          <div className="overflow-hidden rounded-[1rem] bg-white p-2 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.35)]">
-                            <div className="grid grid-cols-2 gap-2">
-                              {galleryTiles.map((tile, index) => (
-                                <div
-                                  key={tile.title}
-                                  className={cn(
-                                    "relative aspect-[4/3] overflow-hidden rounded-[0.85rem] border border-slate-200 p-3 text-slate-900 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.65)]",
-                                    tile.className,
-                                    index === 0 ? "col-span-2 aspect-[16/9]" : ""
-                                  )}
-                                >
-                                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.35),transparent_40%,rgba(255,255,255,0.08))]" />
-                                  <div className="relative flex h-full flex-col justify-between">
-                                    <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-slate-500">
-                                      <span>{tile.subtitle}</span>
-                                      <span>{String(index + 1).padStart(2, "0")}</span>
-                                    </div>
-                                    <div>
-                                      <div className="h-12 w-12 rounded-2xl border border-slate-200 bg-white/60 backdrop-blur-sm shadow-sm" />
-                                      <div className="mt-3 text-sm font-semibold tracking-wide text-slate-900">{tile.title}</div>
-                                    </div>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                          <div className="text-left text-slate-800">
-                            <p className="text-xs uppercase tracking-[0.28em] text-sky-600">Cloud / DevOps</p>
-                            <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                              I design infrastructure, automate delivery, and keep production stable with AWS, Linux, Docker, Kubernetes, and Jenkins.
-                            </p>
-                            <div className="mt-4 space-y-2">
-                              {serviceCards.map((card) => (
-                                <div key={card.title} className="rounded-2xl border border-sky-100 bg-white p-3 shadow-[0_12px_30px_-24px_rgba(15,23,42,0.28)]">
-                                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-sky-600 mb-1">
-                                    <card.icon className="h-3.5 w-3.5" />
-                                    {card.title}
-                                  </div>
-                                  <div className="text-sm text-slate-600 leading-relaxed">{card.desc}</div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mt-5 grid gap-2 text-left text-[10px] uppercase tracking-[0.26em] text-slate-500 sm:grid-cols-2">
-                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">AWS / EC2 / VPC / IAM</div>
-                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">Docker / Kubernetes / ECS</div>
-                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">Jenkins / GitHub Actions</div>
-                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">Nginx / Apache / PM2</div>
-                        </div>
-                      </div>
-                      <div className="mt-4 text-left text-[11px] uppercase tracking-[0.22em] text-slate-600">
-                        I build repeatable deployment systems and reliable cloud platforms for production workloads.
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.45 }}
-                    className="mt-8 flex flex-wrap items-center justify-center gap-3"
-                  >
-                    <Button
-                      asChild
-                      size="lg"
-                      className="rounded-full bg-white text-slate-950 border-0 hover:bg-white/90 shadow-[0_18px_60px_-24px_rgba(255,255,255,0.5)]"
-                    >
-                      <a href="#projects">
-                        View Projects
-                      </a>
-                    </Button>
-                    <Button
-                      asChild
-                      size="lg"
-                      variant="outline"
-                      className="rounded-full border-white/15 bg-white/7 text-white hover:bg-white/12"
-                    >
-                      <a href="/resume.html" download="Ishit_Atwal_CV.html">
-                        <FileDown className="mr-2 h-4 w-4" /> Download CV
-                      </a>
-                    </Button>
-                    <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/8 transition-colors">
-                      Get in touch <MoveRight className="h-4 w-4" />
-                    </a>
-                  </motion.div>
-
-                  <div className="mt-8 flex items-center justify-between gap-4 text-left text-white/82">
-                    <div>
-                      <div className="text-sm font-semibold">Trustpilot</div>
-                      <div className="mt-1 text-xs text-white/60">★★★★★ 4.8 (20+ reviews)</div>
-                    </div>
-                    <div className="hidden sm:block text-right">
-                      <div className="text-sm font-semibold uppercase tracking-[0.2em] text-white/72">Open to</div>
-                      <div className="mt-1 text-xs text-white/60">DevOps, Cloud, and Platform roles</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="hidden xl:flex flex-col gap-3 self-start pt-24 items-end text-right">
-                  {rightTags.map((tag, index) => (
-                    <div
-                      key={tag}
-                      className={cn(
-                        "w-fit rounded-full px-4 py-2 text-[11px] uppercase tracking-[0.2em] backdrop-blur-sm",
-                        index === 0 ? "border border-white/12 bg-white/7 text-white/88" : "text-white/64"
-                      )}
-                    >
-                      {tag}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <motion.a
-            href="#about"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors"
-            aria-label="Scroll down"
-          >
-            <ArrowDown className="h-5 w-5 animate-float" />
-          </motion.a>
-        </div>
+    <div className="relative mx-auto flex min-h-[calc(100vh-6rem)] max-w-7xl flex-col px-5 pb-12 sm:px-8 lg:px-10">
+      <div className="flex items-center justify-between pt-5 text-[10px] font-medium uppercase tracking-[0.22em] text-white/45 sm:pt-8">
+        <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-brand-green shadow-[0_0_12px_hsl(var(--brand-green))]" /> Availability: open</span>
+        <span className="hidden sm:block">India · Remote friendly</span>
       </div>
-    </section>
-  );
-};
+
+      {capabilities.map((capability, index) => (
+        <motion.div
+          key={capability.label}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.65 + index * 0.08 }}
+          className={`absolute hidden items-center gap-2 rounded-full border border-white/10 bg-white/[0.055] px-3 py-2 text-[10px] font-medium uppercase tracking-[0.14em] text-white/72 backdrop-blur-md xl:flex ${capability.className}`}
+        >
+          <capability.icon className="h-3.5 w-3.5 text-brand-green" />
+          {capability.label}
+        </motion.div>
+      ))}
+
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center pb-16 text-center sm:pb-24">
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.18 }}
+          className="eyebrow mb-5"
+        >
+          DevOps Engineer · Cloud Builder
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="display-font pointer-events-none font-black leading-[0.82] tracking-[-0.09em] text-white"
+        >
+          <span className="block text-[clamp(4.25rem,12vw,10.5rem)]">ISHIT ATWAL</span>
+          <span className="mt-2 block whitespace-nowrap text-[clamp(2.15rem,6.6vw,6.3rem)] text-brand-sky-soft">DEVOPS ENGINEER</span>
+        </motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.48 }}
+          className="mt-7 max-w-md"
+        >
+          <p className="text-base font-medium leading-relaxed text-white/82 sm:text-lg">
+            I design, automate, and operate resilient cloud infrastructure for products that need to keep moving.
+          </p>
+          <div className="mt-5 flex flex-wrap justify-center gap-2">
+            <Button asChild size="lg" className="rounded-full bg-white px-5 text-[#140b55] shadow-[0_12px_48px_-12px_rgba(203,191,255,0.72)] hover:bg-[#ebe7ff]">
+              <a href="#projects">Explore my work <ArrowUpRight className="ml-1.5 h-4 w-4" /></a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full border-white/15 bg-white/[0.055] px-5 text-white hover:bg-white/10 hover:text-white">
+              <a href="/resume.html" download="Ishit_Atwal_CV.html"><FileDown className="mr-1.5 h-4 w-4" /> Download CV</a>
+            </Button>
+          </div>
+        </motion.div>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.75, delay: 0.72 }}
+        className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center justify-between gap-5 border-t border-white/10 pt-5 text-center sm:flex-row sm:text-left"
+      >
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.24em] text-white/44">Infrastructure toolkit</p>
+          <div className="mt-2 flex flex-wrap justify-center gap-x-3 gap-y-1 sm:justify-start">
+            {stack.map((item) => <span key={item} className="text-sm font-semibold text-white/82">{item}</span>)}
+          </div>
+        </div>
+        <a href="#about" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/68 transition-colors hover:text-white">
+          Scroll to explore <ArrowDown className="h-4 w-4 animate-bounce" />
+        </a>
+      </motion.div>
+    </div>
+  </section>
+);
