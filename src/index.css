@@ -125,7 +125,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Manrope', 'Inter', system-ui, -apple-system, sans-serif;
     background-image:
       radial-gradient(circle at top left, hsl(var(--brand-sky) / 0.08), transparent 28%),
       radial-gradient(circle at 80% 10%, hsl(var(--brand-green) / 0.08), transparent 22%),
@@ -166,6 +166,10 @@
 
   .terminal-font {
     font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, Menlo, monospace;
+  }
+
+  .display-font {
+    font-family: 'Space Grotesk', 'Manrope', 'Inter', system-ui, sans-serif;
   }
 
   .section-padding {

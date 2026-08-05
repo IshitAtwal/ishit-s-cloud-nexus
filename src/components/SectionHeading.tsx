@@ -22,7 +22,7 @@ export const SectionHeading = ({ eyebrow, title, subtitle }: Props) => (
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, delay: 0.05 }}
-      className="text-3xl md:text-5xl font-semibold tracking-tight text-balance"
+      className="display-font text-3xl md:text-5xl font-semibold tracking-tight text-balance"
     >
       {title}
     </motion.h2>

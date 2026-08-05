@@ -29,22 +29,22 @@ const galleryTiles = [
   {
     title: "AWS Infra",
     subtitle: "EC2, VPC, IAM",
-    className: "bg-[radial-gradient(circle_at_30%_20%,rgba(56,189,248,0.55),transparent_30%),linear-gradient(135deg,#08111f_0%,#0b2a5c_48%,#02050f_100%)]",
+    className: "bg-[radial-gradient(circle_at_25%_20%,rgba(59,130,246,0.22),transparent_30%),linear-gradient(135deg,#eaf4ff_0%,#cfe6ff_48%,#eff6ff_100%)]",
   },
   {
     title: "CI/CD",
     subtitle: "Jenkins, GitHub Actions",
-    className: "bg-[radial-gradient(circle_at_70%_20%,rgba(34,197,94,0.55),transparent_26%),linear-gradient(135deg,#05111f_0%,#0f172a_46%,#030712_100%)]",
+    className: "bg-[radial-gradient(circle_at_70%_20%,rgba(16,185,129,0.18),transparent_26%),linear-gradient(135deg,#ecfdf5_0%,#d1fae5_46%,#f0fdf4_100%)]",
   },
   {
     title: "Containers",
     subtitle: "Docker, Kubernetes",
-    className: "bg-[radial-gradient(circle_at_35%_30%,rgba(59,130,246,0.45),transparent_30%),linear-gradient(135deg,#09111c_0%,#14213d_50%,#02050f_100%)]",
+    className: "bg-[radial-gradient(circle_at_35%_30%,rgba(14,165,233,0.18),transparent_30%),linear-gradient(135deg,#f8fbff_0%,#dbeafe_50%,#eef6ff_100%)]",
   },
   {
     title: "Monitoring",
     subtitle: "CloudWatch, Grafana",
-    className: "bg-[radial-gradient(circle_at_60%_25%,rgba(16,185,129,0.45),transparent_26%),linear-gradient(135deg,#07121b_0%,#0a1e2f_54%,#02050f_100%)]",
+    className: "bg-[radial-gradient(circle_at_60%_25%,rgba(6,182,212,0.18),transparent_26%),linear-gradient(135deg,#f0f9ff_0%,#e0f2fe_54%,#f8fdff_100%)]",
   },
 ];
 
@@ -97,7 +97,7 @@ export const Hero = () => {
                     className="mx-auto max-w-4xl"
                   >
                     <div className="text-[11px] sm:text-sm uppercase tracking-[0.35em] text-white/70">DevOps Engineer</div>
-                    <h1 className="mt-4 text-[clamp(4rem,13vw,10rem)] leading-[0.9] font-black tracking-[-0.08em] text-transparent bg-[linear-gradient(180deg,#ffffff_0%,#8dc9ff_42%,#2f78ff_100%)] bg-clip-text drop-shadow-[0_8px_32px_rgba(59,130,246,0.45)]">
+                    <h1 className="display-font mt-4 text-[clamp(4rem,13vw,10rem)] leading-[0.9] font-black tracking-[-0.08em] text-transparent bg-[linear-gradient(180deg,#ffffff_0%,#8dc9ff_42%,#2f78ff_100%)] bg-clip-text drop-shadow-[0_8px_32px_rgba(59,130,246,0.45)]">
                       ISHIT ATWAL
                     </h1>
                   </motion.div>
@@ -106,63 +106,63 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ duration: 0.9, delay: 0.25 }}
-                    className="mx-auto mt-8 w-full max-w-[50rem] rounded-[2rem] bg-white text-slate-900 shadow-[0_30px_80px_-24px_rgba(15,23,42,0.8)] overflow-hidden"
+                    className="mx-auto mt-8 w-full max-w-[50rem] rounded-[2rem] bg-[#f8fbff] text-slate-900 shadow-[0_30px_80px_-24px_rgba(15,23,42,0.8)] overflow-hidden border border-sky-100"
                   >
                     <div className="p-5 sm:p-6">
-                      <div className="rounded-[1.35rem] bg-[linear-gradient(180deg,rgba(3,7,18,0.98),rgba(9,14,30,0.95))] p-4 sm:p-5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]">
+                      <div className="rounded-[1.35rem] bg-[linear-gradient(180deg,#ffffff,#eef6ff)] p-4 sm:p-5 shadow-[inset_0_0_0_1px_rgba(148,163,184,0.18)]">
                         <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr] sm:items-start">
-                          <div className="overflow-hidden rounded-[1rem] bg-slate-950 p-2">
+                          <div className="overflow-hidden rounded-[1rem] bg-white p-2 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.35)]">
                             <div className="grid grid-cols-2 gap-2">
                               {galleryTiles.map((tile, index) => (
                                 <div
                                   key={tile.title}
                                   className={cn(
-                                    "relative aspect-[4/3] overflow-hidden rounded-[0.85rem] border border-white/8 p-3 text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]",
+                                    "relative aspect-[4/3] overflow-hidden rounded-[0.85rem] border border-slate-200 p-3 text-slate-900 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.65)]",
                                     tile.className,
                                     index === 0 ? "col-span-2 aspect-[16/9]" : ""
                                   )}
                                 >
-                                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),transparent_40%,rgba(0,0,0,0.35))]" />
+                                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.35),transparent_40%,rgba(255,255,255,0.08))]" />
                                   <div className="relative flex h-full flex-col justify-between">
-                                    <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-white/65">
+                                    <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-slate-500">
                                       <span>{tile.subtitle}</span>
                                       <span>{String(index + 1).padStart(2, "0")}</span>
                                     </div>
                                     <div>
-                                      <div className="h-12 w-12 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm" />
-                                      <div className="mt-3 text-sm font-semibold tracking-wide">{tile.title}</div>
+                                      <div className="h-12 w-12 rounded-2xl border border-slate-200 bg-white/60 backdrop-blur-sm shadow-sm" />
+                                      <div className="mt-3 text-sm font-semibold tracking-wide text-slate-900">{tile.title}</div>
                                     </div>
                                   </div>
                                 </div>
                               ))}
                             </div>
                           </div>
-                          <div className="text-left text-white/78">
-                            <p className="text-xs uppercase tracking-[0.28em] text-white/40">Cloud / DevOps</p>
-                            <p className="mt-3 text-sm leading-relaxed text-white/72">
+                          <div className="text-left text-slate-800">
+                            <p className="text-xs uppercase tracking-[0.28em] text-sky-600">Cloud / DevOps</p>
+                            <p className="mt-3 text-sm leading-relaxed text-slate-600">
                               I design infrastructure, automate delivery, and keep production stable with AWS, Linux, Docker, Kubernetes, and Jenkins.
                             </p>
                             <div className="mt-4 space-y-2">
                               {serviceCards.map((card) => (
-                                <div key={card.title} className="rounded-2xl border border-white/8 bg-white/5 p-3">
-                                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-brand-sky mb-1">
+                                <div key={card.title} className="rounded-2xl border border-sky-100 bg-white p-3 shadow-[0_12px_30px_-24px_rgba(15,23,42,0.28)]">
+                                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-sky-600 mb-1">
                                     <card.icon className="h-3.5 w-3.5" />
                                     {card.title}
                                   </div>
-                                  <div className="text-sm text-white/74 leading-relaxed">{card.desc}</div>
+                                  <div className="text-sm text-slate-600 leading-relaxed">{card.desc}</div>
                                 </div>
                               ))}
                             </div>
                           </div>
                         </div>
-                        <div className="mt-5 grid gap-2 text-left text-[10px] uppercase tracking-[0.26em] text-white/42 sm:grid-cols-2">
-                          <div className="rounded-full border border-white/8 bg-white/5 px-3 py-2">AWS / EC2 / VPC / IAM</div>
-                          <div className="rounded-full border border-white/8 bg-white/5 px-3 py-2">Docker / Kubernetes / ECS</div>
-                          <div className="rounded-full border border-white/8 bg-white/5 px-3 py-2">Jenkins / GitHub Actions</div>
-                          <div className="rounded-full border border-white/8 bg-white/5 px-3 py-2">Nginx / Apache / PM2</div>
+                        <div className="mt-5 grid gap-2 text-left text-[10px] uppercase tracking-[0.26em] text-slate-500 sm:grid-cols-2">
+                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">AWS / EC2 / VPC / IAM</div>
+                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">Docker / Kubernetes / ECS</div>
+                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">Jenkins / GitHub Actions</div>
+                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">Nginx / Apache / PM2</div>
                         </div>
                       </div>
-                      <div className="mt-4 text-left text-[11px] uppercase tracking-[0.22em] text-slate-500">
+                      <div className="mt-4 text-left text-[11px] uppercase tracking-[0.22em] text-slate-600">
                         I build repeatable deployment systems and reliable cloud platforms for production workloads.
                       </div>
                     </div>
