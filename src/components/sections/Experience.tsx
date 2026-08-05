@@ -39,10 +39,10 @@ export const Experience = () => (
       />
 
       <div className="relative">
-        {/* timeline line */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-sky/30 via-brand-green/50 to-transparent md:-translate-x-px" />
+        {/* Premium timeline line */}
+        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-accent/50 to-transparent md:-translate-x-px" />
 
-        <div className="space-y-10">
+        <div className="space-y-12">
           {experiences.map((exp, i) => (
             <motion.div
               key={exp.role + i}
@@ -50,32 +50,45 @@ export const Experience = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.05 }}
-              className={`relative md:grid md:grid-cols-2 md:gap-12 ${i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}
+              className={`relative md:grid md:grid-cols-2 md:gap-16 ${i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}
             >
-              {/* dot */}
-              <div className="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 h-3 w-3 rounded-full bg-brand-green ring-4 ring-background shadow-accent-glow" />
+              {/* Enhanced timeline dot */}
+              <motion.div 
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute left-4 md:left-1/2 top-7 -translate-x-1/2 h-4 w-4 rounded-full bg-gradient-accent ring-4 ring-background shadow-lg hover:shadow-accent-glow"
+              />
 
-              <div className={i % 2 === 0 ? "md:text-right md:pr-8" : "md:pl-8"}>
+              <div className={i % 2 === 0 ? "md:text-right md:pr-12" : "md:pl-12"}>
                 <div className="pl-12 md:pl-0">
-                  <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 terminal-font text-[11px] uppercase tracking-[0.2em] text-brand-sky mb-3">
+                  <div className="inline-flex items-center rounded-lg border border-white/15 bg-white/5 px-3.5 py-1.5 terminal-font text-xs uppercase tracking-wider text-transparent bg-gradient-cyan bg-clip-text font-semibold mb-4">
                     {exp.period}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-foreground">{exp.role}</h3>
-                  <div className="mt-1 text-muted-foreground">{exp.company}</div>
+                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">{exp.role}</h3>
+                  <div className="mt-2 text-lg text-muted-foreground font-medium">{exp.company}</div>
                 </div>
               </div>
 
-              <div className={i % 2 === 0 ? "md:pl-8 mt-4 md:mt-0" : "md:pr-8 mt-4 md:mt-0 md:text-right"}>
-                <div className="ml-12 md:ml-0 rounded-[1.5rem] border border-white/10 bg-white/5 p-5 shadow-glass backdrop-blur-md">
+              <div className={i % 2 === 0 ? "md:pl-12 mt-6 md:mt-0" : "md:pr-12 mt-6 md:mt-0"}>
+                <motion.div 
+                  whileHover={{ y: -4 }}
+                  className="ml-12 md:ml-0 card-premium p-6 space-y-3 hover:border-white/20 hover:shadow-lg transition-all"
+                >
                   <ul className="space-y-3">
-                    {exp.points.map((p) => (
-                      <li key={p} className="flex items-start gap-3 rounded-2xl border border-white/5 bg-black/10 px-3 py-3 text-sm text-muted-foreground">
-                        <Briefcase className="h-3.5 w-3.5 mt-1 shrink-0 text-brand-green" />
-                        <span className="text-foreground/90">{p}</span>
-                      </li>
+                    {exp.points.map((p, idx) => (
+                      <motion.li 
+                        key={p} 
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.05 }}
+                        className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/5 px-3.5 py-3 text-sm hover:border-white/20 hover:bg-white/10 transition-all"
+                      >
+                        <Briefcase className="h-4 w-4 mt-0.5 shrink-0 text-gradient-accent" />
+                        <span className="text-foreground/90 leading-relaxed">{p}</span>
+                      </motion.li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}

@@ -1,244 +1,120 @@
 import { motion } from "framer-motion";
-import { ArrowDown, FileDown, FolderGit2, MoveRight, ServerCog, Workflow, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowDown, MoveRight } from "lucide-react";
 import { TerminalBackground } from "../TerminalBackground";
-import { cn } from "@/lib/utils";
-
-const leftTags = ["AWS ENGINEER", "LINUX SERVERS", "DEVOPS ENGINEER"];
-const rightTags = ["KUBERNETES", "JENKINS CI/CD", "MONITORING", "DOCKER", "VPC / IAM"];
-
-const serviceCards = [
-  {
-    icon: ServerCog,
-    title: "Infrastructure",
-    desc: "AWS EC2, VPC, S3, IAM, CloudWatch, CloudTrail",
-  },
-  {
-    icon: Workflow,
-    title: "Delivery",
-    desc: "Jenkins pipelines, GitHub Actions, Docker, PM2",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Reliability",
-    desc: "Nginx, Apache, Kubernetes, alerts, troubleshooting",
-  },
-];
-
-const galleryTiles = [
-  {
-    title: "AWS Infra",
-    subtitle: "EC2, VPC, IAM",
-    className: "bg-[radial-gradient(circle_at_25%_20%,rgba(59,130,246,0.22),transparent_30%),linear-gradient(135deg,#eaf4ff_0%,#cfe6ff_48%,#eff6ff_100%)]",
-  },
-  {
-    title: "CI/CD",
-    subtitle: "Jenkins, GitHub Actions",
-    className: "bg-[radial-gradient(circle_at_70%_20%,rgba(16,185,129,0.18),transparent_26%),linear-gradient(135deg,#ecfdf5_0%,#d1fae5_46%,#f0fdf4_100%)]",
-  },
-  {
-    title: "Containers",
-    subtitle: "Docker, Kubernetes",
-    className: "bg-[radial-gradient(circle_at_35%_30%,rgba(14,165,233,0.18),transparent_30%),linear-gradient(135deg,#f8fbff_0%,#dbeafe_50%,#eef6ff_100%)]",
-  },
-  {
-    title: "Monitoring",
-    subtitle: "CloudWatch, Grafana",
-    className: "bg-[radial-gradient(circle_at_60%_25%,rgba(6,182,212,0.18),transparent_26%),linear-gradient(135deg,#f0f9ff_0%,#e0f2fe_54%,#f8fdff_100%)]",
-  },
-];
 
 export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden bg-[#02050f] pt-24"
+      className="relative min-h-screen overflow-hidden bg-gradient-hero pt-32"
     >
       <TerminalBackground />
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid min-h-[calc(100vh-6rem)] items-center py-6">
-          <div className="relative overflow-hidden rounded-[2.75rem] border border-white/10 bg-[#050817]/92 shadow-[0_40px_120px_-30px_rgba(8,47,129,0.85)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_30%,rgba(37,99,235,0.8),transparent_28%),radial-gradient(circle_at_68%_78%,rgba(14,165,233,0.55),transparent_22%),radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.08),transparent_20%)]" />
-            <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(8,12,24,0.15),rgba(0,0,0,0.75))]" />
-
-            <div className="relative p-5 sm:p-6 lg:p-8 xl:px-10 xl:py-7">
-              <div className="flex items-center justify-between gap-4 text-[11px] uppercase tracking-[0.28em] text-white/70">
-                <div className="flex items-center gap-3">
-                  <div className="text-white/90 font-semibold tracking-[0.18em]">ISHIT</div>
-                  <div className="hidden md:flex items-center gap-2 text-brand-green lowercase tracking-normal">
-                    <span className="h-2 w-2 rounded-full bg-brand-green" />
-                    available for work
-                  </div>
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center">
+          <div className="w-full">
+            {/* Hero Content */}
+            <div className="text-center mb-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+              >
+                <div className="inline-block mb-6 rounded-full border border-white/10 bg-white/5 px-4 py-1.5">
+                  <span className="text-sm text-transparent bg-gradient-cyan bg-clip-text">
+                    ✨ DevOps Engineer & Cloud Architect
+                  </span>
                 </div>
-                <div className="hidden md:flex items-center gap-8 text-white/80">
-                  <span>Self</span>
-                  <span>Service</span>
-                  <span>Blog</span>
-                </div>
-                <a href="#contact" className="rounded-full border border-white/12 bg-white/8 px-4 py-2 text-white/90 transition-colors hover:bg-white/12">
-                  Hire Me
-                </a>
-              </div>
+              </motion.div>
 
-              <div className="mt-10 grid gap-8 xl:grid-cols-[0.95fr_1.1fr_0.95fr] xl:items-center">
-                <div className="hidden xl:flex flex-col gap-3 self-start pt-24">
-                  {leftTags.map((tag) => (
-                    <div key={tag} className="w-fit rounded-full border border-white/12 bg-white/7 px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm">
-                      {tag}
-                    </div>
-                  ))}
-                </div>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="display-font text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-[0.95] tracking-[-0.03em]"
+              >
+                <span className="text-gradient">ISHIT</span>
+                <br />
+                <span className="text-white">ATWAL</span>
+              </motion.h1>
 
-                <div className="relative px-2 sm:px-6 xl:px-0 text-center">
-                  <motion.div
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.15 }}
-                    className="mx-auto max-w-4xl"
-                  >
-                    <div className="text-[11px] sm:text-sm uppercase tracking-[0.35em] text-white/70">DevOps Engineer</div>
-                    <h1 className="display-font mt-4 text-[clamp(4rem,13vw,10rem)] leading-[0.9] font-black tracking-[-0.08em] text-transparent bg-[linear-gradient(180deg,#ffffff_0%,#8dc9ff_42%,#2f78ff_100%)] bg-clip-text drop-shadow-[0_8px_32px_rgba(59,130,246,0.45)]">
-                      ISHIT ATWAL
-                    </h1>
-                  </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
+              >
+                Building reliable cloud infrastructure with AWS, Docker, and Kubernetes. Specializing in DevOps automation and infrastructure as code.
+              </motion.p>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.9, delay: 0.25 }}
-                    className="mx-auto mt-8 w-full max-w-[50rem] rounded-[2rem] bg-[#f8fbff] text-slate-900 shadow-[0_30px_80px_-24px_rgba(15,23,42,0.8)] overflow-hidden border border-sky-100"
-                  >
-                    <div className="p-5 sm:p-6">
-                      <div className="rounded-[1.35rem] bg-[linear-gradient(180deg,#ffffff,#eef6ff)] p-4 sm:p-5 shadow-[inset_0_0_0_1px_rgba(148,163,184,0.18)]">
-                        <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr] sm:items-start">
-                          <div className="overflow-hidden rounded-[1rem] bg-white p-2 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.35)]">
-                            <div className="grid grid-cols-2 gap-2">
-                              {galleryTiles.map((tile, index) => (
-                                <div
-                                  key={tile.title}
-                                  className={cn(
-                                    "relative aspect-[4/3] overflow-hidden rounded-[0.85rem] border border-slate-200 p-3 text-slate-900 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.65)]",
-                                    tile.className,
-                                    index === 0 ? "col-span-2 aspect-[16/9]" : ""
-                                  )}
-                                >
-                                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.35),transparent_40%,rgba(255,255,255,0.08))]" />
-                                  <div className="relative flex h-full flex-col justify-between">
-                                    <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-slate-500">
-                                      <span>{tile.subtitle}</span>
-                                      <span>{String(index + 1).padStart(2, "0")}</span>
-                                    </div>
-                                    <div>
-                                      <div className="h-12 w-12 rounded-2xl border border-slate-200 bg-white/60 backdrop-blur-sm shadow-sm" />
-                                      <div className="mt-3 text-sm font-semibold tracking-wide text-slate-900">{tile.title}</div>
-                                    </div>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                          <div className="text-left text-slate-800">
-                            <p className="text-xs uppercase tracking-[0.28em] text-sky-600">Cloud / DevOps</p>
-                            <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                              I design infrastructure, automate delivery, and keep production stable with AWS, Linux, Docker, Kubernetes, and Jenkins.
-                            </p>
-                            <div className="mt-4 space-y-2">
-                              {serviceCards.map((card) => (
-                                <div key={card.title} className="rounded-2xl border border-sky-100 bg-white p-3 shadow-[0_12px_30px_-24px_rgba(15,23,42,0.28)]">
-                                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-sky-600 mb-1">
-                                    <card.icon className="h-3.5 w-3.5" />
-                                    {card.title}
-                                  </div>
-                                  <div className="text-sm text-slate-600 leading-relaxed">{card.desc}</div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mt-5 grid gap-2 text-left text-[10px] uppercase tracking-[0.26em] text-slate-500 sm:grid-cols-2">
-                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">AWS / EC2 / VPC / IAM</div>
-                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">Docker / Kubernetes / ECS</div>
-                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">Jenkins / GitHub Actions</div>
-                          <div className="rounded-full border border-sky-100 bg-sky-50 px-3 py-2">Nginx / Apache / PM2</div>
-                        </div>
-                      </div>
-                      <div className="mt-4 text-left text-[11px] uppercase tracking-[0.22em] text-slate-600">
-                        I build repeatable deployment systems and reliable cloud platforms for production workloads.
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.45 }}
-                    className="mt-8 flex flex-wrap items-center justify-center gap-3"
-                  >
-                    <Button
-                      asChild
-                      size="lg"
-                      className="rounded-full bg-white text-slate-950 border-0 hover:bg-white/90 shadow-[0_18px_60px_-24px_rgba(255,255,255,0.5)]"
-                    >
-                      <a href="#projects">
-                        View Projects
-                      </a>
-                    </Button>
-                    <Button
-                      asChild
-                      size="lg"
-                      variant="outline"
-                      className="rounded-full border-white/15 bg-white/7 text-white hover:bg-white/12"
-                    >
-                      <a href="/resume.html" download="Ishit_Atwal_CV.html">
-                        <FileDown className="mr-2 h-4 w-4" /> Download CV
-                      </a>
-                    </Button>
-                    <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/8 transition-colors">
-                      Get in touch <MoveRight className="h-4 w-4" />
-                    </a>
-                  </motion.div>
-
-                  <div className="mt-8 flex items-center justify-between gap-4 text-left text-white/82">
-                    <div>
-                      <div className="text-sm font-semibold">Trustpilot</div>
-                      <div className="mt-1 text-xs text-white/60">★★★★★ 4.8 (20+ reviews)</div>
-                    </div>
-                    <div className="hidden sm:block text-right">
-                      <div className="text-sm font-semibold uppercase tracking-[0.2em] text-white/72">Open to</div>
-                      <div className="mt-1 text-xs text-white/60">DevOps, Cloud, and Platform roles</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="hidden xl:flex flex-col gap-3 self-start pt-24 items-end text-right">
-                  {rightTags.map((tag, index) => (
-                    <div
-                      key={tag}
-                      className={cn(
-                        "w-fit rounded-full px-4 py-2 text-[11px] uppercase tracking-[0.2em] backdrop-blur-sm",
-                        index === 0 ? "border border-white/12 bg-white/7 text-white/88" : "text-white/64"
-                      )}
-                    >
-                      {tag}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-wrap items-center justify-center gap-4 mb-16"
+              >
+                <motion.a
+                  href="#projects"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ y: 0 }}
+                  className="inline-flex items-center gap-2 rounded-lg bg-gradient-accent px-8 py-3 text-white font-semibold shadow-lg hover:shadow-accent-glow transition-all"
+                >
+                  View Projects
+                  <ArrowDown className="h-4 w-4" />
+                </motion.a>
+                <motion.a
+                  href="#contact"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ y: 0 }}
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-8 py-3 text-white font-semibold hover:bg-white/10 transition-all"
+                >
+                  Get in Touch
+                  <MoveRight className="h-4 w-4" />
+                </motion.a>
+              </motion.div>
             </div>
-          </div>
 
-          <motion.a
-            href="#about"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors"
-            aria-label="Scroll down"
-          >
-            <ArrowDown className="h-5 w-5 animate-float" />
-          </motion.a>
+            {/* Stats Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+            >
+              {[
+                { label: "AWS Expertise", value: "5+ Years" },
+                { label: "Infrastructure", value: "20+ Projects" },
+                { label: "Uptime Record", value: "99.9%" },
+                { label: "Team Reviews", value: "★★★★★" }
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -4 }}
+                  className="group card-premium p-4 md:p-6 text-center"
+                >
+                  <div className="text-lg md:text-2xl font-bold text-transparent bg-gradient-cyan bg-clip-text mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs md:text-sm text-muted-foreground">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        animate={{ y: [0, 12, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors"
+      >
+        <a href="#about" className="flex flex-col items-center gap-2">
+          <span className="text-xs uppercase tracking-wider">Scroll to explore</span>
+          <ArrowDown className="h-5 w-5" />
+        </a>
+      </motion.div>
     </section>
   );
 };
+

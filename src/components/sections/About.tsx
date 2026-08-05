@@ -25,7 +25,7 @@ export const About = () => (
     <div className="mx-auto max-w-5xl">
       <SectionHeading eyebrow="01 — About" title="Engineer at the intersection of cloud, code, and automation." />
 
-      <div className="grid md:grid-cols-5 gap-8 items-start">
+      <div className="grid md:grid-cols-5 gap-10 items-start">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export const About = () => (
           and production application monitoring.
         </motion.p>
 
-        <div className="md:col-span-2 space-y-4">
+        <div className="md:col-span-2 space-y-3">
           {items.map((it, i) => (
             <motion.div
               key={it.title}
@@ -51,14 +51,17 @@ export const About = () => (
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass rounded-[1.25rem] p-4 shadow-glass flex items-start gap-3 hover:border-sky-400/30 hover:shadow-[0_20px_60px_-24px_rgba(59,130,246,0.45)] transition-all"
+              whileHover={{ x: 4 }}
+              className="card-premium p-5 hover:border-white/20 hover:shadow-md transition-all group cursor-pointer"
             >
-              <div className="shrink-0 h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white">
-                <it.icon className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="font-semibold">{it.title}</div>
-                <div className="text-sm text-muted-foreground">{it.desc}</div>
+              <div className="flex items-start gap-4">
+                <div className="shrink-0 h-11 w-11 rounded-lg bg-gradient-accent flex items-center justify-center text-white shadow-lg group-hover:shadow-accent-glow transition-all">
+                  <it.icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <div className="font-semibold text-foreground">{it.title}</div>
+                  <div className="text-sm text-muted-foreground mt-1">{it.desc}</div>
+                </div>
               </div>
             </motion.div>
           ))}

@@ -32,7 +32,7 @@ export const Contact = () => {
           subtitle="Open to DevOps, cloud, and infrastructure roles."
         />
 
-        <div className="grid md:grid-cols-5 gap-6">
+        <div className="grid md:grid-cols-5 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -40,43 +40,45 @@ export const Contact = () => {
             transition={{ duration: 0.6 }}
             className="md:col-span-2 space-y-4"
           >
-            <a
+            <motion.a
               href="mailto:ishitatwal20@gmail.com"
-              className="block rounded-[1.4rem] border border-white/10 bg-white/5 p-5 shadow-glass hover:border-sky-400/25 hover:shadow-[0_20px_60px_-28px_rgba(59,130,246,0.45)] transition-all"
+              whileHover={{ y: -4 }}
+              className="block card-premium p-6 hover:border-white/20 hover:shadow-lg transition-all group"
             >
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white shadow-accent-glow">
+              <div className="flex items-center gap-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-accent flex items-center justify-center text-white shadow-lg group-hover:shadow-accent-glow transition-all">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider">Email</div>
-                  <div className="font-semibold">ishitatwal20@gmail.com</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Email</div>
+                  <div className="font-semibold text-foreground mt-1">ishitatwal20@gmail.com</div>
                 </div>
               </div>
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
               href="tel:+917876131708"
-              className="block rounded-[1.4rem] border border-white/10 bg-white/5 p-5 shadow-glass hover:border-sky-400/25 hover:shadow-[0_20px_60px_-28px_rgba(59,130,246,0.45)] transition-all"
+              whileHover={{ y: -4 }}
+              className="block card-premium p-6 hover:border-white/20 hover:shadow-lg transition-all group"
             >
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white shadow-accent-glow">
+              <div className="flex items-center gap-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-cyan flex items-center justify-center text-white shadow-lg group-hover:shadow-glow transition-all">
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider">Phone</div>
-                  <div className="font-semibold">+91-7876131708</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Phone</div>
+                  <div className="font-semibold text-foreground mt-1">+91-7876131708</div>
                 </div>
               </div>
-            </a>
+            </motion.a>
 
-            <div className="rounded-[1.4rem] border border-white/10 bg-[#08101e]/90 p-5 shadow-glass terminal-font text-sm">
-              <div className="text-brand-green">$ whoami</div>
-              <div className="text-foreground/80 mt-1">ishit_atwal</div>
-              <div className="text-brand-green mt-2">$ focus</div>
-              <div className="text-foreground/80 mt-1">devops_cloud_linux_automation</div>
-              <div className="text-brand-green mt-2">$ status</div>
-              <div className="text-foreground/80 mt-1">open_to_opportunities</div>
+            <div className="rounded-xl border border-white/15 bg-[#050817] p-6 shadow-md terminal-font text-sm space-y-2">
+              <div className="text-transparent bg-gradient-cyan bg-clip-text">$ whoami</div>
+              <div className="text-foreground/80">ishit_atwal</div>
+              <div className="text-transparent bg-gradient-cyan bg-clip-text mt-3">$ focus</div>
+              <div className="text-foreground/80">devops_cloud_linux_automation</div>
+              <div className="text-transparent bg-gradient-cyan bg-clip-text mt-3">$ status</div>
+              <div className="text-foreground/80">open_to_opportunities</div>
             </div>
           </motion.div>
 
@@ -86,7 +88,7 @@ export const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="md:col-span-3 rounded-[1.6rem] border border-white/10 bg-white/5 p-6 md:p-8 shadow-glass space-y-4 backdrop-blur-md"
+            className="md:col-span-3 card-premium p-8 space-y-5 hover:border-white/20 hover:shadow-lg transition-all"
           >
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-1.5">

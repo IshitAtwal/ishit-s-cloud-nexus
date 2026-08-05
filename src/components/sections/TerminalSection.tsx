@@ -79,47 +79,47 @@ export const TerminalSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="rounded-[1.6rem] overflow-hidden shadow-card border border-white/10 bg-[#07111f]"
+          className="rounded-2xl overflow-hidden shadow-lg border border-white/15 bg-[#050817] backdrop-blur-lg hover:shadow-accent-glow transition-all"
         >
           {/* title bar */}
-          <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/5 bg-white/5">
-            <div className="flex items-center gap-1.5">
-              <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-              <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-              <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+          <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/10 bg-white/5">
+            <div className="flex items-center gap-2">
+              <span className="h-3 w-3 rounded-full bg-[#ff5f57] shadow-md" />
+              <span className="h-3 w-3 rounded-full bg-[#febc2e] shadow-md" />
+              <span className="h-3 w-3 rounded-full bg-[#28c840] shadow-md" />
             </div>
-            <div className="terminal-font text-xs text-white/60">ishit@devops: ~/infra</div>
+            <div className="terminal-font text-xs text-transparent bg-gradient-cyan bg-clip-text font-semibold">ishit@devops: ~/infra</div>
             <div className="w-12" />
           </div>
 
           <div
             ref={scrollRef}
-            className="terminal-font text-sm p-5 md:p-6 h-80 overflow-y-auto leading-relaxed"
+            className="terminal-font text-sm p-6 md:p-8 h-96 overflow-y-auto leading-relaxed bg-gradient-to-b from-white/[0.02] to-transparent"
           >
             {/* history of completed steps */}
             {steps.slice(0, stepIdx).map((s, i) => (
-              <div key={i} className="opacity-60 mb-3">
-                <div>
-                  <span className="text-terminal-prompt">ishit@devops</span>
-                  <span className="text-white/50">:</span>
-                  <span className="text-brand-sky-soft">~/infra</span>
-                  <span className="text-white/50">$ </span>
-                  <span className="text-white/90">{s.prompt}</span>
+              <div key={i} className="opacity-50 mb-4 pb-4 border-b border-white/5">
+                <div className="mb-2">
+                  <span className="text-transparent bg-gradient-cyan bg-clip-text">ishit@devops</span>
+                  <span className="text-white/40">:</span>
+                  <span className="text-primary">~/infra</span>
+                  <span className="text-white/40">$ </span>
+                  <span className="text-white/80">{s.prompt}</span>
                 </div>
                 {s.output.map((line, j) => (
-                  <div key={j} className="text-terminal-fg/80">{line}</div>
+                  <div key={j} className="text-secondary/90 text-opacity-70">{line}</div>
                 ))}
               </div>
             ))}
 
             {/* current step */}
             <div>
-              <div>
-                <span className="text-terminal-prompt">ishit@devops</span>
-                <span className="text-white/50">:</span>
-                <span className="text-brand-sky-soft">~/infra</span>
-                <span className="text-white/50">$ </span>
-                <span className={`text-white ${phase === "typing" ? "cursor-blink" : ""}`}>{typed}</span>
+              <div className="mb-2">
+                <span className="text-transparent bg-gradient-cyan bg-clip-text font-semibold">ishit@devops</span>
+                <span className="text-white/40">:</span>
+                <span className="text-primary">~/infra</span>
+                <span className="text-white/40">$ </span>
+                <span className={`text-foreground font-semibold ${phase === "typing" ? "cursor-blink" : ""}`}>{typed}</span>
               </div>
               {outputLines.map((line, j) => (
                 <motion.div
@@ -127,7 +127,7 @@ export const TerminalSection = () => {
                   initial={{ opacity: 0, x: -4 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="text-terminal-fg"
+                  className="text-secondary/80"
                 >
                   {line}
                 </motion.div>
