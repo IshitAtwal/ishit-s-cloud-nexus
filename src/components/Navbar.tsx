@@ -35,58 +35,63 @@ export const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "fixed top-0 inset-x-0 z-50 transition-all duration-500",
+          "fixed top-0 inset-x-0 z-50 transition-all duration-300",
           scrolled ? "py-2" : "py-4"
         )}
       >
         <div className={cn("mx-auto max-w-7xl px-4 md:px-6 transition-all")}>
           <div
             className={cn(
-              "flex items-center justify-between gap-4 rounded-full px-4 md:px-6 py-2.5 transition-all",
-              scrolled ? "glass shadow-glass" : "bg-transparent"
+              "flex items-center justify-between gap-4 rounded-2xl px-5 md:px-7 py-3 transition-all duration-300",
+              scrolled 
+                ? "glass shadow-md border border-white/10" 
+                : "bg-transparent border border-transparent"
             )}
           >
             <div className="flex items-center gap-4 md:gap-6 min-w-0">
-              <a href="#home" className="flex items-center gap-2 font-bold tracking-tight shrink-0">
-                <span className="h-2.5 w-2.5 rounded-full bg-brand-green animate-pulse-glow" />
-                <span className="text-gradient">ishitatwal.me</span>
+              <a href="#home" className="flex items-center gap-2 font-bold tracking-tight shrink-0 hover:opacity-80 transition-opacity">
+                <span className="h-2.5 w-2.5 rounded-full bg-gradient-accent animate-pulse" />
+                <span className="bg-gradient-text bg-clip-text text-transparent">ISHIT</span>
               </a>
-              <div className="hidden sm:flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
-                <span className="text-brand-green">Available for work</span>
-                <span className="opacity-60">Follow</span>
+              <div className="hidden sm:flex items-center gap-2 text-xs md:text-sm">
+                <span className="text-brand-cyan font-medium">Available</span>
+                <span className="text-muted-foreground">for work</span>
               </div>
             </div>
 
-            <nav className="hidden md:flex items-center gap-1 rounded-full border border-white/10 bg-black/10 p-1">
+            <nav className="hidden lg:flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1">
               {links.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
-                  className="text-sm px-3 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/8 transition-colors"
+                  className="text-sm px-3.5 py-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/10 transition-all duration-200"
                 >
                   {l.label}
                 </a>
               ))}
             </nav>
 
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-3 shrink-0">
               <ThemeToggle />
-              <a
+              <motion.a
                 href="#contact"
-                className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-[#0b1020] px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_30px_-12px_rgba(255,255,255,0.25)] transition-transform hover:-translate-y-0.5"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-gradient-accent px-5 py-2 text-sm font-semibold text-white shadow-lg hover:shadow-accent-glow transition-all"
               >
-                Get in touch
+                Contact
                 <ArrowUpRight className="h-4 w-4" />
-              </a>
+              </motion.a>
             </div>
           </div>
         </div>
       </motion.header>
 
-      <div className="fixed top-0 inset-x-0 z-[60] h-[2px] bg-transparent">
-        <div
-          className="h-full bg-gradient-accent transition-[width] duration-150"
+      <div className="fixed top-0 inset-x-0 z-[60] h-1 bg-transparent">
+        <motion.div
+          className="h-full bg-gradient-accent"
           style={{ width: `${progress}%` }}
+          transition={{ duration: 0.15 }}
         />
       </div>
     </>

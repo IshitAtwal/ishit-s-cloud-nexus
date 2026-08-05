@@ -25,7 +25,7 @@ export const Skills = () => (
         subtitle="A compact view of the tools I use to ship, observe, and stabilize cloud infrastructure."
       />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
         {groups.map((g, i) => (
           <motion.div
             key={g.title}
@@ -33,22 +33,24 @@ export const Skills = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: i * 0.05 }}
-            whileHover={{ y: -4 }}
-            className="group relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/5 p-5 shadow-glass hover:border-sky-400/25 hover:shadow-[0_20px_60px_-28px_rgba(59,130,246,0.45)] transition-all"
+            whileHover={{ y: -6, scale: 1.02 }}
+            className="group card-premium p-6 hover:border-white/20 hover:shadow-lg transition-all cursor-pointer"
           >
-            {/* glow */}
-            <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-brand-sky/0 group-hover:bg-brand-sky/15 blur-2xl transition-all duration-500" />
+            {/* Glow effect */}
+            <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-accent/0 group-hover:bg-gradient-accent/10 blur-3xl transition-all duration-500 pointer-events-none" />
 
             <div className="relative">
-              <div className="h-10 w-10 rounded-xl bg-gradient-accent flex items-center justify-center text-white mb-3 shadow-accent-glow">
-                <g.icon className="h-5 w-5" />
+              <div className="h-12 w-12 rounded-xl bg-gradient-accent flex items-center justify-center text-white mb-4 shadow-lg group-hover:shadow-accent-glow transition-all">
+                <g.icon className="h-6 w-6" />
               </div>
-              <div className="font-semibold mb-2 tracking-tight text-foreground">{g.title}</div>
-              <div className="flex flex-wrap gap-1.5">
+              <h3 className="font-semibold text-lg mb-3 text-foreground group-hover:text-transparent group-hover:bg-gradient-text group-hover:bg-clip-text transition-all">
+                {g.title}
+              </h3>
+              <div className="flex flex-wrap gap-2">
                 {g.items.map((it) => (
                   <span
                     key={it}
-                    className="terminal-font text-[11px] px-2 py-0.5 rounded-full bg-black/20 text-foreground/80 border border-white/10"
+                    className="terminal-font text-xs px-2.5 py-1 rounded-lg bg-white/5 text-foreground/80 border border-white/15 hover:border-white/30 hover:bg-white/10 transition-all"
                   >
                     {it}
                   </span>
