@@ -31,8 +31,8 @@ const PortraitCard = () => (
           alt="Ishit Atwal"
           loading="lazy"
           decoding="async"
-          width={687}
-          height={900}
+          width={876}
+          height={820}
           className="portrait absolute bottom-0 left-1/2 h-[92%] w-auto max-w-none -translate-x-1/2"
         />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#080617] to-transparent" />
