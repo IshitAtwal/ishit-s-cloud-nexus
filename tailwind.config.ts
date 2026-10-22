@@ -1,9 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
-  prefix: "",
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,
@@ -46,14 +44,11 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         brand: {
-          deep: "hsl(var(--brand-deep))",
           sky: "hsl(var(--brand-sky))",
           "sky-soft": "hsl(var(--brand-sky-soft))",
           green: "hsl(var(--brand-green))",
-          "green-glow": "hsl(var(--brand-green-glow))",
         },
         terminal: {
-          bg: "hsl(var(--terminal-bg))",
           fg: "hsl(var(--terminal-fg))",
           prompt: "hsl(var(--terminal-prompt))",
         },
@@ -64,51 +59,32 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       backgroundImage: {
-        "gradient-hero": "var(--gradient-hero)",
-        "gradient-brand": "var(--gradient-brand)",
         "gradient-accent": "var(--gradient-accent)",
       },
       boxShadow: {
         glass: "var(--shadow-glass)",
         card: "var(--shadow-card)",
-        glow: "var(--shadow-glow)",
-        "accent-glow": "var(--shadow-accent-glow)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "fade-in": {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "float": {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-15px)" },
-        },
-        "float-slow": {
-          "0%, 100%": { transform: "translate(0,0)" },
-          "50%": { transform: "translate(20px,-25px)" },
+        "float-card": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-9px)" },
         },
         "pulse-glow": {
           "0%, 100%": { opacity: "0.6" },
           "50%": { opacity: "1" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s var(--transition-smooth) both",
-        "float": "float 6s ease-in-out infinite",
-        "float-slow": "float-slow 12s ease-in-out infinite",
+        "float-card": "float-card 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        marquee: "marquee 38s linear infinite",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 } satisfies Config;

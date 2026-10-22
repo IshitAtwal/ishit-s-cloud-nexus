@@ -6,13 +6,17 @@ import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Showcase } from "@/components/sections/Showcase";
 import { TerminalSection } from "@/components/sections/TerminalSection";
+import { Resume } from "@/components/sections/Resume";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/Footer";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { CursorGlow } from "@/components/CursorGlow";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <h1 className="sr-only">Ishit Atwal — DevOps & Cloud Engineer Portfolio</h1>
+      <ScrollProgress />
+      <CursorGlow />
       <Navbar />
       <Hero />
       <About />
@@ -21,6 +25,7 @@ const Index = () => {
       <Projects />
       <Showcase />
       <TerminalSection />
+      <Resume />
       <Contact />
       <Footer />
     </main>

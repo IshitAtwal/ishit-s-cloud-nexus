@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Cpu, ShieldCheck } from "lucide-react";
 import { SectionHeading } from "../SectionHeading";
 
@@ -21,8 +21,10 @@ export const TerminalSection = () => {
   const [outputLines, setOutputLines] = useState<string[]>([]);
   const [phase, setPhase] = useState<"typing" | "output" | "pause">("typing");
   const scrollRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(scrollRef, { margin: "100px" });
 
   useEffect(() => {
+    if (!inView) return;
     const step = steps[stepIndex];
     let timer: ReturnType<typeof setTimeout>;
 
@@ -44,7 +46,7 @@ export const TerminalSection = () => {
     }
 
     return () => clearTimeout(timer);
-  }, [typed, phase, outputLines, stepIndex]);
+  }, [typed, phase, outputLines, stepIndex, inView]);
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;

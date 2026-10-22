@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Boxes, Globe2, Layers3, LockKeyhole } from "lucide-react";
 import { SectionHeading } from "../SectionHeading";
+import { TiltCard } from "../TiltCard";
 
 const projects = [
   {
@@ -54,9 +55,8 @@ export const Projects = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: index * 0.07 }}
-            whileHover={{ y: -6 }}
-            className="group overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#0a0718] shadow-card"
           >
+            <TiltCard className="overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#0a0718] shadow-card transition-colors duration-500 hover:border-brand-sky/40">
             <div className={`relative h-52 overflow-hidden bg-gradient-to-br ${project.accent} p-5 sm:h-60`}>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(255,255,255,0.34),transparent_6%),radial-gradient(circle_at_24%_108%,rgba(139,113,255,0.72),transparent_42%)]" />
               <div className="absolute -bottom-12 left-1/2 h-40 w-[115%] -translate-x-1/2 rounded-[50%] border border-white/40 bg-[#08060e]/95 shadow-[0_-16px_42px_rgba(184,151,255,0.52)]" />
@@ -64,7 +64,7 @@ export const Projects = () => (
                 <span className="rounded-full border border-white/20 bg-black/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/78 backdrop-blur-sm">{project.type}</span>
                 <span className="terminal-font text-xs text-white/65">/{String(index + 1).padStart(2, "0")}</span>
               </div>
-              <div className="relative mt-10 grid h-14 w-14 place-items-center rounded-2xl border border-white/20 bg-white/10 text-white shadow-[0_10px_30px_rgba(9,5,29,0.26)] backdrop-blur-md">
+              <div className="relative mt-10 grid h-14 w-14 transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-6 place-items-center rounded-2xl border border-white/20 bg-white/10 text-white shadow-[0_10px_30px_rgba(9,5,29,0.26)] backdrop-blur-md">
                 <project.icon className="h-6 w-6" />
               </div>
             </div>
@@ -82,6 +82,7 @@ export const Projects = () => (
               </div>
               <a href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.17em] text-brand-sky-soft transition-colors hover:text-white">Discuss this build <ArrowUpRight className="h-3.5 w-3.5" /></a>
             </div>
+            </TiltCard>
           </motion.article>
         ))}
       </div>

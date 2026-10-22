@@ -18,14 +18,32 @@ export const SectionHeading = ({ eyebrow, title, subtitle }: Props) => (
       {eyebrow}
     </motion.div>
     <motion.h2
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.65, delay: 0.05 }}
-      className="display-font text-balance text-4xl font-semibold leading-[0.98] tracking-[-0.055em] text-white sm:text-5xl lg:text-6xl"
+      transition={{ staggerChildren: 0.05, delayChildren: 0.05 }}
+      aria-label={title}
+      className="display-font text-balance text-4xl font-semibold leading-[1.02] tracking-[-0.055em] text-white sm:text-5xl lg:text-6xl"
     >
-      {title}
+      {title.split(" ").map((word, i) => (
+        <span key={i} aria-hidden="true" className="inline-block overflow-hidden pb-[0.08em] align-bottom">
+          <motion.span
+            variants={{ hidden: { y: "110%", opacity: 0 }, show: { y: 0, opacity: 1 } }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-block"
+          >
+            {word}&nbsp;
+          </motion.span>
+        </span>
+      ))}
     </motion.h2>
+    <motion.div
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="mt-6 h-px w-32 origin-left bg-gradient-accent"
+    />
     {subtitle && (
       <motion.p
         initial={{ opacity: 0, y: 12 }}
