@@ -25,7 +25,8 @@ const PortraitCard = () => (
       <div className="relative aspect-[4/5] overflow-hidden rounded-[calc(2rem-1px)] bg-[radial-gradient(circle_at_50%_38%,#2f4bd8_0%,#16206b_45%,#080617_80%)]">
         <div className="absolute inset-0 surface-grid opacity-60" />
         <div className="absolute left-1/2 top-[30%] aspect-square w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
-        <div className="absolute left-1/2 top-[30%] aspect-square w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-cyan-200/20 animate-[spin_30s_linear_infinite]" />
+        {/* `translate` property, not transform classes: the spin animation owns `transform`. */}
+        <div className="absolute left-1/2 top-[30%] aspect-square w-[62%] rounded-full border border-dashed border-cyan-200/20 animate-[spin_30s_linear_infinite] [translate:-50%_-50%]" />
         <img
           src={portrait}
           alt="Ishit Atwal"

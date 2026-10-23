@@ -46,8 +46,8 @@ export const Resume = () => (
               <img
                 src={cvPreview}
                 alt="Preview of Ishit Atwal's CV"
-                width={935}
-                height={1210}
+                width={770}
+                height={996}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full transition-transform duration-700 group-hover/cv:scale-[1.03]"

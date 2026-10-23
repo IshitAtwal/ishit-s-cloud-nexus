@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Secrets (Gmail app password etc.)
+.env
+.env.*
+!.env.example
+
+# Netlify
+.netlify

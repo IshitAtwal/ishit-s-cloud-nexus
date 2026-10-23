@@ -6,23 +6,7 @@
   :root {
     --background: 242 44% 4%;
     --foreground: 250 45% 96%;
-    --card: 244 38% 9%;
-    --card-foreground: 250 45% 96%;
-    --popover: 244 38% 9%;
-    --popover-foreground: 250 45% 96%;
-    --primary: 259 87% 70%;
-    --primary-foreground: 244 48% 7%;
-    --secondary: 246 29% 16%;
-    --secondary-foreground: 250 45% 96%;
-    --muted: 245 27% 13%;
-    --muted-foreground: 250 17% 68%;
-    --accent: 190 94% 63%;
-    --accent-foreground: 244 48% 7%;
-    --destructive: 0 84% 63%;
-    --destructive-foreground: 0 0% 100%;
     --border: 255 45% 72% / 0.16;
-    --input: 255 35% 75% / 0.15;
-    --ring: 259 87% 70%;
     --radius: 1rem;
 
     --brand-sky: 262 88% 70%;
@@ -200,13 +184,7 @@
   background-size: 170px 170px, 230px 230px, 280px 280px, 210px 210px, 320px 320px, 250px 250px;
 }
 
-.hero-stars-twinkle {
-  background-image: radial-gradient(circle at 22% 30%, #fff 0 1.2px, transparent 2px), radial-gradient(circle at 64% 8%, hsl(190 100% 86%) 0 1.2px, transparent 2px), radial-gradient(circle at 45% 76%, #fff 0 1px, transparent 2px);
-  background-size: 260px 260px, 340px 340px, 300px 300px;
-  animation: twinkle 4s ease-in-out infinite;
-}
-
-/* Solid-ish fill instead of backdrop-filter: seven moving blurred layers are costly on mobile GPUs. */
+/* Solid-ish fill instead of backdrop-filter, which is costly on mobile GPUs. */
 .orbit-card {
   border: 1px solid hsl(220 100% 85% / 0.16);
   background: linear-gradient(180deg, hsl(226 62% 26% / 0.92), hsl(232 60% 16% / 0.92));
@@ -219,38 +197,9 @@
   box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.18), 0 14px 40px -14px hsl(232 90% 4% / 0.9), 0 0 32px -4px hsl(210 100% 65% / 0.55);
 }
 
-.podium-ring {
-  background: conic-gradient(from 0deg, transparent 0deg, hsl(190 100% 70%) 60deg, transparent 120deg, transparent 180deg, hsl(262 100% 75%) 240deg, transparent 300deg);
-  -webkit-mask: radial-gradient(circle, transparent 66%, #000 67%, #000 70%, transparent 71%);
-  mask: radial-gradient(circle, transparent 66%, #000 67%, #000 70%, transparent 71%);
-  animation: spin 6s linear infinite;
-}
-
-.podium-ring-reverse { animation-direction: reverse; animation-duration: 9s; }
-
-/* Data packet travelling along a topology cable toward the hub. */
-.packet {
-  stroke-dasharray: 5 95;
-  stroke-dashoffset: 100;
-  opacity: 0;
-  filter: drop-shadow(0 0 3px #67e8f9);
-  animation: packet 2.8s linear infinite;
-}
-
-.spotlight {
-  clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
-  background: linear-gradient(180deg, hsl(220 100% 80% / 0), hsl(215 100% 75% / 0.1) 55%, hsl(200 100% 75% / 0.22));
-}
-
 .portrait {
   -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 99%);
   mask-image: linear-gradient(180deg, #000 72%, transparent 99%);
-  filter: drop-shadow(0 0 28px hsl(225 100% 60% / 0.45));
-}
-
-.particle {
-  opacity: 0;
-  animation: rise 5s ease-out infinite;
 }
 
 .marquee-mask {
@@ -270,15 +219,12 @@
 
 @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
 @keyframes spin { to { transform: rotate(360deg); } }
-@keyframes packet { 0% { stroke-dashoffset: 100; opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
 @keyframes scan { 0% { transform: translateY(-100%); } 60%, 100% { transform: translateY(1400%); } }
 @keyframes aurora { from { transform: translate(0, 0) scale(1); } to { transform: translate(18%, 12%) scale(1.15); } }
 @keyframes shimmer { to { background-position: -250% 0; } }
 @keyframes horizon-glow { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
 @keyframes sweep { to { --sweep: 80deg; } }
 @keyframes eq { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.35); } }
-@keyframes twinkle { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
-@keyframes rise { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(-220px); } }
 @keyframes shine { 0%, 60% { transform: translateX(-120%) skewX(-20deg); } 100% { transform: translateX(220%) skewX(-20deg); } }
 
 @media (max-width: 640px) {
