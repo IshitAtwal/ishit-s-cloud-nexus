@@ -1,21 +1,102 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, FileText, FolderGit2, House, Layers3, Mail, UserRound, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const links = [
-  { href: "#about", label: "Profile" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Stack" },
-  { href: "#projects", label: "Work" },
-  { href: "#resume", label: "Resume" },
-  { href: "#contact", label: "Contact" },
+type DockLink = { href: string; label: string; icon: LucideIcon; desktopOnly?: boolean };
+
+const links: DockLink[] = [
+  { href: "#home", label: "Home", icon: House, desktopOnly: true },
+  { href: "#about", label: "Profile", icon: UserRound },
+  { href: "#experience", label: "Experience", icon: BriefcaseBusiness },
+  { href: "#skills", label: "Stack", icon: Layers3 },
+  { href: "#projects", label: "Work", icon: FolderGit2 },
+  { href: "#resume", label: "Resume", icon: FileText },
+  { href: "#contact", label: "Contact", icon: Mail },
 ];
+
+const spring = { type: "spring" as const, stiffness: 420, damping: 34 };
+
+/**
+ * Icon dock whose active item morphs from a circle into a labelled pill while a shared
+ * white surface slides between items. Inactive items show their label on hover/focus.
+ */
+const MorphingDock = ({ active, placement }: { active: string; placement: "top" | "bottom" }) => (
+  <nav
+    aria-label="Sections"
+    className="flex items-center gap-1 rounded-full border border-white/10 bg-[#0b0920]/85 p-1.5 shadow-[0_18px_50px_-18px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+  >
+    {links.map((link) => {
+      const isActive = active === link.href;
+      return (
+        <motion.a
+          key={link.href}
+          href={link.href}
+          layout
+          transition={spring}
+          initial="rest"
+          animate="rest"
+          whileHover="hover"
+          whileFocus="hover"
+          whileTap={{ scale: 0.92 }}
+          aria-label={link.label}
+          aria-current={isActive ? "true" : undefined}
+          className={cn(
+            "group relative flex h-9 items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-brand-sky sm:h-10",
+            isActive ? "gap-2 pl-3 pr-4" : "w-9 bg-white/[0.06] hover:bg-white/[0.12] sm:w-10",
+            link.desktopOnly && "hidden lg:flex"
+          )}
+        >
+          {isActive && (
+            <motion.span
+              layoutId={`dock-surface-${placement}`}
+              transition={spring}
+              className="absolute inset-0 rounded-full bg-white shadow-[0_6px_24px_-6px_rgba(167,139,250,0.9)]"
+            />
+          )}
+
+          <motion.span
+            variants={{ rest: { scale: 1, y: 0, rotate: 0 }, hover: { scale: 1.2, y: -1, rotate: isActive ? 0 : -8 } }}
+            transition={{ type: "spring", stiffness: 500, damping: 15 }}
+            className={cn("relative grid place-items-center", isActive ? "text-[#140b55]" : "text-white/75 group-hover:text-white")}
+          >
+            <link.icon className="h-4 w-4" />
+          </motion.span>
+
+          <AnimatePresence initial={false}>
+            {isActive && (
+              <motion.span
+                key="label"
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: "auto" }}
+                exit={{ opacity: 0, width: 0 }}
+                transition={spring}
+                className="relative overflow-hidden whitespace-nowrap text-[13px] font-extrabold text-[#140b55]"
+              >
+                {link.label}
+              </motion.span>
+            )}
+          </AnimatePresence>
+
+          {!isActive && (
+            <span
+              className={cn(
+                "pointer-events-none absolute left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#0b0920] px-2 py-1 text-[11px] font-semibold text-white opacity-0 shadow-lg transition-all duration-200 group-hover:opacity-100 group-focus-visible:opacity-100",
+                placement === "top" ? "top-full mt-2 -translate-y-1 group-hover:translate-y-0" : "bottom-full mb-2 translate-y-1 group-hover:translate-y-0"
+              )}
+            >
+              {link.label}
+            </span>
+          )}
+        </motion.a>
+      );
+    })}
+  </nav>
+);
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("");
-  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("#home");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -29,72 +110,54 @@ export const Navbar = () => {
       (entries) => entries.forEach((entry) => entry.isIntersecting && setActive(`#${entry.target.id}`)),
       { rootMargin: "-45% 0px -50% 0px" }
     );
-    ["home", ...links.map((link) => link.href.slice(1))].forEach((id) => {
-      const el = document.getElementById(id);
+    links.forEach((link) => {
+      const el = document.getElementById(link.href.slice(1));
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -24, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-x-0 top-0 z-50 px-4 py-4 sm:px-6"
-    >
-      <div
-        className={cn(
-          "mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-full border px-4 py-2.5 transition-all duration-500 sm:px-5",
-          scrolled || open
-            ? "border-white/10 bg-[#080615]/80 shadow-[0_18px_60px_-24px_rgba(0,0,0,0.9)] backdrop-blur-xl"
-            : "border-transparent bg-transparent"
-        )}
+    <>
+      <motion.header
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed inset-x-0 top-0 z-50 px-4 py-4 sm:px-6"
       >
-        <a href="#home" className="flex min-w-0 items-center gap-3">
-          <motion.img
-            src="/favicon.svg"
-            alt=""
-            width={40}
-            height={40}
-            whileHover={{ rotate: -8, scale: 1.08 }}
-            className="h-10 w-10 shrink-0 rounded-xl shadow-[0_0_24px_rgba(117,91,255,0.45)]"
-          />
-          <span className="min-w-0">
-            <span className="block truncate text-base font-extrabold tracking-tight text-white">Ishit Atwal</span>
-            <span className="hidden items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-green sm:flex">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-green opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-green" />
+        <div
+          className={cn(
+            "mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-full border px-4 py-2 transition-all duration-500 sm:px-5",
+            scrolled
+              ? "border-white/10 bg-[#080615]/70 shadow-[0_18px_60px_-24px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+              : "border-transparent bg-transparent"
+          )}
+        >
+          <a href="#home" className="flex min-w-0 items-center gap-3">
+            <motion.img
+              src="/favicon.svg"
+              alt=""
+              width={40}
+              height={40}
+              whileHover={{ rotate: -8, scale: 1.08 }}
+              className="h-10 w-10 shrink-0 rounded-xl shadow-[0_0_24px_rgba(117,91,255,0.45)]"
+            />
+            <span className="min-w-0">
+              <span className="block truncate text-base font-extrabold tracking-tight text-white">Ishit Atwal</span>
+              <span className="hidden items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-green sm:flex">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-green opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-green" />
+                </span>
+                Cloud systems online
               </span>
-              Cloud systems online
             </span>
-          </span>
-        </a>
+          </a>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.035] p-1 lg:flex">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "relative rounded-full px-4 py-2 text-sm font-bold transition-colors",
-                active === link.href ? "text-white" : "text-white/65 hover:text-white"
-              )}
-            >
-              {active === link.href && (
-                <motion.span
-                  layoutId="nav-pill"
-                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                  className="absolute inset-0 rounded-full border border-white/10 bg-white/10"
-                />
-              )}
-              <span className="relative">{link.label}</span>
-            </a>
-          ))}
-        </nav>
+          <div className="hidden lg:block">
+            <MorphingDock active={active} placement="top" />
+          </div>
 
-        <div className="flex items-center gap-2">
           <a
             href="#contact"
             className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-4 py-2.5 text-sm font-extrabold text-[#110956] transition-transform hover:-translate-y-0.5 sm:px-5"
@@ -102,47 +165,18 @@ export const Navbar = () => {
             Let&apos;s talk
             <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[0.05] text-white lg:hidden"
-          >
-            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
         </div>
-      </div>
+      </motion.header>
 
-      <AnimatePresence>
-        {open && (
-          <motion.nav
-            initial={{ opacity: 0, y: -12, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -12, scale: 0.98 }}
-            transition={{ duration: 0.25 }}
-            className="mx-auto mt-2 max-w-7xl rounded-3xl border border-white/10 bg-[#080615]/95 p-2 backdrop-blur-xl lg:hidden"
-          >
-            {links.map((link, i) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.04 }}
-                className={cn(
-                  "flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-bold",
-                  active === link.href ? "bg-white/10 text-white" : "text-white/70"
-                )}
-              >
-                {link.label}
-                <ArrowUpRight className="h-4 w-4 opacity-50" />
-              </motion.a>
-            ))}
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </motion.header>
+      {/* Mobile/tablet: the same dock floats at the bottom, within thumb reach. */}
+      <motion.div
+        initial={{ y: 80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-3 pb-[max(1rem,env(safe-area-inset-bottom))] lg:hidden"
+      >
+        <MorphingDock active={active} placement="bottom" />
+      </motion.div>
+    </>
   );
 };

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Activity, Boxes, Cloud, Database, GitBranch, Network, Server, ShieldCheck, Terminal, Wrench } from "lucide-react";
 import { SectionHeading } from "../SectionHeading";
+import { TechDeck } from "../TechDeck";
 
 // Mirrors the "Technical Skills" block of the CV. `wide` cards span two columns on larger screens.
 const groups = [
@@ -24,6 +25,10 @@ export const Skills = () => (
         title="The tools inside my cloud control plane."
         subtitle="A working toolkit for launching, automating, observing, and securing modern application infrastructure."
       />
+
+      <div className="mb-6">
+        <TechDeck />
+      </div>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {groups.map((group, index) => (

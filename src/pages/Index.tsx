@@ -14,7 +14,7 @@ import { CursorGlow } from "@/components/CursorGlow";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen overflow-x-clip bg-background pb-20 text-foreground lg:pb-0">
       <ScrollProgress />
       <CursorGlow />
       <Navbar />
